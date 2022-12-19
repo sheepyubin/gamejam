@@ -7,28 +7,54 @@ public class PlayerMove : MonoBehaviour
 {
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
+    bool isground;
+    [SerializeField]
+    Transform pos;
+    [SerializeField]
+    float radius;
+    [SerializeField]
+    LayerMask layer;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
+    public int jumpcount;
+    int Jumpcnt;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        Jumpcnt = jumpcount;
     }
 
     void Update()
     {
+        isground = Physics2D.OverlapCircle(pos.position, radius, layer); //땅에 닿았는가?
 
-        if (Input.GetKeyDown("c"))// && !anim.GetBool("isJumping")) //점프
+        if (isground == true && Input.GetKeyDown("c")&&Jumpcnt>0) //점프 1
+        {
+                rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        }
+        if (isground == false && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 2
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            //anim.SetBool("isJumping", true);
+        }
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            Jumpcnt--; //n단
+        }
+        if (isground)
+        {
+            Jumpcnt = jumpcount; //0이하로 내려가면 점프 불가
         }
 
-        if (Input.GetKeyDown("z"))//공격
+        if (Input.GetKeyDown("z"))//공격모션
         {
+            if (anim.GetBool("isLeft") == true)
+            {
+                spriteRenderer.flipX = true;
+            }
             anim.SetBool("isAttack", true);
         }
 
@@ -37,13 +63,8 @@ public class PlayerMove : MonoBehaviour
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
 
         }
-
-        //if (Mathf.Abs(rigid.velocity.x) < 0.3) //애니메이션
-           // anim.SetBool("isWorking", false);
-        //else
-          //  anim.SetBool("isWorking", true);
-
     }
+
 
     public void IdleAnimation()
     {
@@ -69,20 +90,6 @@ public class PlayerMove : MonoBehaviour
             //spriteRenderer.flipX = true;
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         }
-
-        if (rigid.velocity.y < 0)
-        {
-            //Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
-            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
-            if (rayHit.collider != null) // 바닥 감지
-            {
-                if (rayHit.distance < 0.5f)
-                {
-                    anim.SetBool("isJumping", false);
-                }
-            }
-        }
-
     }
 }
 

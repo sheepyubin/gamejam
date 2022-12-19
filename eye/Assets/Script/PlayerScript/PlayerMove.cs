@@ -64,6 +64,8 @@ public class PlayerMove : MonoBehaviour
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
 
         }
+
+
     }
 
     public void flipx()

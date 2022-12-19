@@ -31,11 +31,11 @@ public class Box : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && isboxing == false && isbox)
+        if (Input.GetKeyDown(KeyCode.F) && isboxing == false && isbox)
         {
             transform.GetChild(0).gameObject.SetActive(false);
             isboxing = true;
-            ran = Random.Range(1, 5);
+            ran = Random.Range(1, 9);
             boximage.sprite = boxopen;
             Eyes = EyesController.Create(ran);
             GameEyes = GameObject.FindGameObjectWithTag("eyes");

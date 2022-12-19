@@ -16,11 +16,11 @@ public class EyesController : MonoBehaviour
     public Sprite[] Eyes;
 
     bool isEyes = false;
-    GameObject player;
+    PlayerMove player;
 
     private void Awake()
     {
-        //player = FindObjectOfType<Player>();
+        player = FindObjectOfType<PlayerMove>();
         EyeInfo = new EyesDB.EyesRow();
 
     }

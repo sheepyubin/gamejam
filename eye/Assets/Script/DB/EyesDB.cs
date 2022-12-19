@@ -80,7 +80,7 @@ public class EyesDB : MonoBehaviour
     }
     private SQLiteConnection GetConnection()
     {
-        string dbPath = Application.streamingAssetsPath + "/DB.db";
+        string dbPath = Application.streamingAssetsPath + "/Eyes.db";
         SQLiteConnection conn = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
 
         return conn;

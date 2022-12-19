@@ -7,11 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
-    private bool isdash;//대쉬
-    public float dashspeed;
-    public float defaultTime;
-    private float dashTIme;
-    private float defaultspeed;
+    public float dashpower; //대시
     bool isground;
     [SerializeField]
     Transform pos;
@@ -70,6 +66,10 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    public void flipx()
+    {
+        spriteRenderer.flipX = false;
+    }
 
     public void IdleAnimation()
     {
@@ -78,7 +78,6 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-
         float h = Input.GetAxisRaw("Horizontal");
         rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse); //이동
 
@@ -94,24 +93,6 @@ public class PlayerMove : MonoBehaviour
             anim.SetBool("isLeft", true);
             //spriteRenderer.flipX = true;
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
-        }
-
-        if (Input.GetKeyDown("x"))
-        {
-            isdash= true;
-        }
-
-        if (dashTIme <= 0)
-        {
-            defaultspeed = maxSpeed;
-            if (isdash)
-            {
-                dashTIme = defaultTime;
-            }
-        }else
-        {
-            dashTIme-=Time.deltaTime;
-            defaultspeed = dashspeed;
         }
     }
 }

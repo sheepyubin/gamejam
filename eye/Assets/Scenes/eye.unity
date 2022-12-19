@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 580516450}
   - component: {fileID: 580516449}
   - component: {fileID: 580516448}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 707773345}
   - component: {fileID: 707773347}
   - component: {fileID: 707773346}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 835976137}
   - component: {fileID: 835976138}
   - component: {fileID: 835976139}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (Legacy) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,9 +465,9 @@ GameObject:
   - component: {fileID: 1228231500}
   - component: {fileID: 1228231502}
   - component: {fileID: 1228231503}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: eye
-  m_TagString: Untagged
+  m_TagString: eyes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 1403165563}
   - component: {fileID: 1403165565}
   - component: {fileID: 1403165564}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 1547621917}
   - component: {fileID: 1547621916}
   - component: {fileID: 1547621915}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 1749210887}
   - component: {fileID: 1749210889}
   - component: {fileID: 1749210888}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 1846137188}
   - component: {fileID: 1846137189}
   - component: {fileID: 1846137190}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (Legacy) (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

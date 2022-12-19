@@ -510,8 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 5
   jumpPower: 5
-  dashspeed: 0
-  defaultTime: 0
+  dashpower: 0
   pos: {fileID: 2104833356}
   radius: 0.4
   layer:

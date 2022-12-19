@@ -4,36 +4,26 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public Transform target;
-    public float speed;
-
-    Transform CameraLimit;
-
-    public Transform[] Limit;
-
-    float height;
-    float width;
-
-    private void Start()
+    public GameObject target;
+    public GameObject to;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        height = Camera.main.orthographicSize;
-        width = height * Screen.width / Screen.height;
-        ChangeLimit(0);
+        if (collision.CompareTag("Player"))
+        {
+            target = collision.gameObject;
+        }
     }
 
-    public void ChangeLimit(int x)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        CameraLimit = Limit[x];
+        if (collision.CompareTag("Player"))
+        {
+            StartCoroutine(TeleportRoutine());
+        }
     }
-    private void LateUpdate()
+    IEnumerator TeleportRoutine()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
-
-        float lx = CameraLimit.localScale.x * 0.5f - width;
-        float clampX = Mathf.Clamp(transform.position.x, -lx + CameraLimit.position.x, -lx + CameraLimit.position.y);
-        float ly = CameraLimit.localScale.y * 0.5f - height;
-        float clampY = Mathf.Clamp(transform.position.y, -ly+ CameraLimit.position.x, -ly + CameraLimit.position.y);
-
-        transform.position = new Vector3(clampX, clampY, -10f);
+        yield return null;
+        target.transform.position = to.transform.position;
     }
 }

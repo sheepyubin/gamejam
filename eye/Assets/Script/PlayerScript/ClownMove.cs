@@ -8,6 +8,7 @@ public class ClownMove : MonoBehaviour
     public float jumpPower; // 점프
     public float dashpower; //대시
     bool isground;
+    public float time;
     [SerializeField]
     Transform ArrowPos;
     [SerializeField]
@@ -62,6 +63,8 @@ public class ClownMove : MonoBehaviour
         if (Input.GetKeyDown("x")) //스킬
         {
             anim.SetBool("isSkill", true);
+            Invoke("ItTime", time * 3 / 4);
+            Invoke("TimeEnd", time);
         }
 
         if (Input.GetButtonUp("Horizontal")) //속도제한
@@ -76,6 +79,14 @@ public class ClownMove : MonoBehaviour
             anim.SetBool("isWalk", true);
     }
 
+    void TimeEnd()
+    {
+        anim.SetBool("isTime", true);
+    }
+    void ItTime()
+    {
+
+    }
     public void IdleAnimation()
     {
         anim.SetBool("isAttack", false);

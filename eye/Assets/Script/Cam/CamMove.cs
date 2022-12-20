@@ -59,7 +59,7 @@ public class CamMove : MonoBehaviour
         {
             Cam1.enabled = true;
             Cam2.enabled = false;
-        }-- 
+        }
         if (collision.CompareTag("Stage2"))
         {
             Cam1.enabled = false;

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 177161558}
   - component: {fileID: 177161557}
   - component: {fileID: 177161556}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: hit_Atack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +618,6 @@ MonoBehaviour:
   - {fileID: 1693228340}
   - {fileID: 521230470}
   - {fileID: 177161555}
-  BossAttackCount: 0
 --- !u!1 &521230470
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,7 +629,7 @@ GameObject:
   - component: {fileID: 521230473}
   - component: {fileID: 521230472}
   - component: {fileID: 521230471}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: right_Scratch_Atack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,7 +740,7 @@ GameObject:
   - component: {fileID: 1693228343}
   - component: {fileID: 1693228342}
   - component: {fileID: 1693228341}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: left_Scratch_Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

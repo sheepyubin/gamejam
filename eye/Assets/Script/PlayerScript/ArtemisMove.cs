@@ -52,11 +52,12 @@ public class ArtemisMove : MonoBehaviour
 
         if (Input.GetKeyDown("z"))//공격모션
         {
-            if (anim.GetBool("isLeft") == true)
-            {
-                spriteRenderer.flipX = true;
-            }
             anim.SetBool("isAttack", true);
+        }
+
+        if (Input.GetKeyDown("x")) //스킬
+        {
+            anim.SetBool("isSkill", true);
         }
 
         if (Input.GetButtonUp("Horizontal")) //속도제한
@@ -64,7 +65,6 @@ public class ArtemisMove : MonoBehaviour
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
 
         }
-
 
     }
 
@@ -78,6 +78,11 @@ public class ArtemisMove : MonoBehaviour
         anim.SetBool("isAttack", false);
     }
 
+    public void IdleAnimationSkill()
+    {
+        anim.SetBool("isSkill", false);
+    }
+
     void FixedUpdate()
     {
         float h = Input.GetAxisRaw("Horizontal");
@@ -87,13 +92,13 @@ public class ArtemisMove : MonoBehaviour
         if (rigid.velocity.x > maxSpeed)
         {  //오른쪽
             anim.SetBool("isLeft", false);
-            //spriteRenderer.flipX = false;
+            spriteRenderer.flipX = false;
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         }
         else if (rigid.velocity.x < maxSpeed * (-1)) //왼쪽
         {
             anim.SetBool("isLeft", true);
-            //spriteRenderer.flipX = true;
+            spriteRenderer.flipX = true;
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         }
     }

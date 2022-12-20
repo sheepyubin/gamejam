@@ -6,6 +6,8 @@ TagManager:
   tags:
   - eyes
   - Monster
+  - Stage1
+  - Stage2
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - Monster
   - Eye
   - Player
-  - PlayerDamaged
+  - 
   - 
   - 
   - 

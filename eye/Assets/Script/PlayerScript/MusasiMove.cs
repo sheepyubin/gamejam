@@ -54,6 +54,11 @@ public class MusasiMove : MonoBehaviour
             anim.SetBool("isAttack", true);
         }
 
+        if (Input.GetKeyDown("x"))
+        {
+            anim.SetBool("isSkill", true);
+        }
+
         if (Input.GetButtonUp("Horizontal")) //속도제한
         {
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
@@ -68,6 +73,8 @@ public class MusasiMove : MonoBehaviour
 
     public void IdleAnimation()
     {
+        anim.SetBool("isSkill", false);
+        anim.SetBool("isWalk", false);
         anim.SetBool("isAttack", false);
     }
 

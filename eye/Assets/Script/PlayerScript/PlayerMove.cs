@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -33,9 +32,9 @@ public class PlayerMove : MonoBehaviour
     {
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //땅에 닿았는가?
 
-        if (isground == true && Input.GetKeyDown("c")&&Jumpcnt>0) //점프 1
+        if (isground == true && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 1
         {
-                rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
         if (isground == false && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 2
         {
@@ -52,11 +51,12 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown("z"))//공격모션
         {
-            if (anim.GetBool("isLeft") == true)
-            {
-                spriteRenderer.flipX = true;
-            }
             anim.SetBool("isAttack", true);
+        }
+
+        if (Input.GetKeyDown("x")) //스킬
+        {
+            anim.SetBool("isSkill", true);
         }
 
         if (Input.GetButtonUp("Horizontal")) //속도제한
@@ -65,17 +65,19 @@ public class PlayerMove : MonoBehaviour
 
         }
 
-
-    }
-
-    public void flipx()
-    {
-        spriteRenderer.flipX = false;
+        if (Mathf.Abs(rigid.velocity.x) < 0.01) //Idle or walk
+            anim.SetBool("isWalk", false);
+        else
+            anim.SetBool("isWalk", true);
     }
 
     public void IdleAnimation()
     {
         anim.SetBool("isAttack", false);
+    }
+    public void IdleAnimationSkill()
+    {
+        anim.SetBool("isSkill", false);
     }
 
     void FixedUpdate()
@@ -84,18 +86,15 @@ public class PlayerMove : MonoBehaviour
         rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse); //이동
 
 
-        if (rigid.velocity.x > maxSpeed)
+        if (rigid.velocity.x >= maxSpeed)
         {  //오른쪽
-            anim.SetBool("isLeft", false);
-            //spriteRenderer.flipX = false;
+            spriteRenderer.flipX = false;
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         }
-        else if (rigid.velocity.x < maxSpeed * (-1)) //왼쪽
+        else if (rigid.velocity.x <= maxSpeed * (-1)) //왼쪽
         {
-            anim.SetBool("isLeft", true);
-            //spriteRenderer.flipX = true;
+            spriteRenderer.flipX = true;
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         }
     }
 }
-

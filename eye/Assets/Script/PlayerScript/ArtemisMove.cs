@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class MusasiMove : MonoBehaviour
+public class ArtemisMove : MonoBehaviour
 {
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
@@ -32,9 +33,9 @@ public class MusasiMove : MonoBehaviour
     {
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //땅에 닿았는가?
 
-        if (isground == true && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 1
+        if (isground == true && Input.GetKeyDown("c")&&Jumpcnt>0) //점프 1
         {
-            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
         if (isground == false && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 2
         {
@@ -54,7 +55,7 @@ public class MusasiMove : MonoBehaviour
             anim.SetBool("isAttack", true);
         }
 
-        if (Input.GetKeyDown("x"))
+        if (Input.GetKeyDown("x")) //스킬
         {
             anim.SetBool("isSkill", true);
         }
@@ -65,10 +66,11 @@ public class MusasiMove : MonoBehaviour
 
         }
 
-        if (Mathf.Abs(rigid.velocity.x) < 0.01) //Idle or walk
-            anim.SetBool("isWalk", false);
-        else
-            anim.SetBool("isWalk", true);
+    }
+
+    public void flipx()
+    {
+        spriteRenderer.flipX = false;
     }
 
     public void IdleAnimation()
@@ -87,15 +89,18 @@ public class MusasiMove : MonoBehaviour
         rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse); //이동
 
 
-        if (rigid.velocity.x >= maxSpeed)
+        if (rigid.velocity.x > maxSpeed)
         {  //오른쪽
+            anim.SetBool("isLeft", false);
             spriteRenderer.flipX = false;
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         }
-        else if (rigid.velocity.x <= maxSpeed * (-1)) //왼쪽
+        else if (rigid.velocity.x < maxSpeed * (-1)) //왼쪽
         {
+            anim.SetBool("isLeft", true);
             spriteRenderer.flipX = true;
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         }
     }
 }
+

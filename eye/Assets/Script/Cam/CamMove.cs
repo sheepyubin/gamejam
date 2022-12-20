@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class CamMove : MonoBehaviour
 {
-    public Camera Cam1;
-    public Camera Cam2;
-
     [SerializeField]
     Transform playerTransform;
     [SerializeField]
@@ -19,16 +16,6 @@ public class CamMove : MonoBehaviour
     float cameraMoveSpeed;
     float height;
     float width;
-
-
-    private void Awake()
-    {
-        Cam1.depth= 0;
-        Cam2.depth = -1;
-        Cam1.enabled = true;
-        Cam2.enabled = true;
-    }
-
     void Start()
     {
         playerTransform = GameObject.Find("Player").GetComponent<Transform>(); //플레이어 위치
@@ -60,31 +47,5 @@ public class CamMove : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(center, mapSize * 2);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) //카메라 전환 (스테이지 넘어 갈 때)
-    {
-        if (collision.CompareTag("Stage1"))
-        {
-            Debug.Log("1");
-            ShowCam1View();
-        }
-        if (collision.CompareTag("Stage2"))
-        {
-            Debug.Log("2");
-            ShowCam2View();
-        }
-    }
-
-    public void ShowCam1View()
-    {
-        Cam1.enabled = true;
-        Cam2.enabled = false;
-    }
-
-    public void ShowCam2View()
-    {
-        Cam1.enabled = false;
-        Cam2.enabled = true;
     }
 }

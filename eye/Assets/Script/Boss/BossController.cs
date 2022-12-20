@@ -27,12 +27,14 @@ public class BossController : MonoBehaviour
             Debug.Log(ani);
             anime.SetInteger("count", ani);
         }
-        if (ani >= 4)
+        if (ani >= 5)
         {
             ani = 0;
         }
         if (Input.GetKeyDown(KeyCode.B))
             anime.SetInteger("count", 3);
+        if (Input.GetKeyDown(KeyCode.N))
+            anime.SetInteger("count", 4);
     }
 
     public void ShowBossHitBox(int hit)
@@ -49,10 +51,8 @@ public class BossController : MonoBehaviour
         BossAttackBox[attack].SetActive(false);
     }
 
-    public void LeftBossSkillProduce()
+    public void BossSkillProduce(float y)
     {
-        for(int i =  0;i < 3;i++)
-            Instantiate(BossSkill, new Vector3(-2 + i, 0.6f, 0), Quaternion.identity);
+        Instantiate(BossSkill, new Vector3(y, 6f, 0), Quaternion.identity);
     }
-
 }

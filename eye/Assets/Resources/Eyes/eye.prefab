@@ -285,16 +285,16 @@ MonoBehaviour:
   NameText: {fileID: 7995963192848813696}
   ClassText: {fileID: 7995963193254482755}
   ItemImage: {fileID: 7995963192281256336}
-  ItemRenderer: {fileID: 7995963192087806817}
+  EyesRenderer: {fileID: 7995963192087806817}
   Eyes:
+  - {fileID: 800499618, guid: c39a150468aac0145a1511cb21392c87, type: 3}
+  - {fileID: 142344578, guid: 2df9e29e3e5d0004eaa743c9b6004ef6, type: 3}
   - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
   - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
   - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
   - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
   - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
-  - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
-  - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
-  - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
+  - {fileID: 286427585, guid: fb93bab1661c4ed478c2c3b04776d646, type: 3}
 --- !u!1 &7995963192281256337
 GameObject:
   m_ObjectHideFlags: 0

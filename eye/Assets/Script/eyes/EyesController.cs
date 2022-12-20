@@ -11,25 +11,28 @@ public class EyesController : MonoBehaviour
     [SerializeField] private Image ItemImage = null;
     private EyesDB.EyesRow EyeInfo = null;
 
-    public SpriteRenderer ItemRenderer;
+    public SpriteRenderer EyesRenderer;
 
     public Sprite[] Eyes;
 
     bool isEyes = false;
     PlayerMove player;
 
+    int playerIndex;
+
+    EyesImage eyesImage;
+
     private void Awake()
     {
         player = FindObjectOfType<PlayerMove>();
         EyeInfo = new EyesDB.EyesRow();
-
+        eyesImage = FindObjectOfType<EyesImage>();
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F) && isEyes == true)
         {
-            //player.ItemNum++;
-            //Debug.Log(player.ItemNum);
+            eyesImage.changeImage(playerIndex);
             Destroy(gameObject);
         }
         else if (Input.GetKeyDown(KeyCode.F) && isEyes == true)
@@ -54,11 +57,11 @@ public class EyesController : MonoBehaviour
         }
     }
     public static EyesController Create(int id)
-    {
+    {        
         GameObject IT = Instantiate(Resources.Load("Eyes/eye")) as GameObject;
 
-
         EyesController Eye = IT.GetComponent<EyesController>();
+        Eye.playerIndex = id;
         Eye.Init(id);
 
         return Eye;
@@ -72,7 +75,7 @@ public class EyesController : MonoBehaviour
         {
             EyeInfo = result[0];
             ItemImage.sprite = Eyes[id];
-            ItemRenderer.sprite = Eyes[id];
+            EyesRenderer.sprite = Eyes[id];
             RefreshItemInfo();
         }
     }

@@ -26,13 +26,9 @@ public class BossController : MonoBehaviour
     {
         BossHitBox[attack].SetActive(false);
         BossAttackBox[attack].SetActive(true);
-        Invoke("notBossAttackBox", 0.1f);
     }
-    public void notBossAttackBox()
+    public void notBossAttackBox(int attack)
     {
-        BossAttackBox[0].SetActive(false);
-        BossAttackBox[1].SetActive(false);
-        BossAttackBox[2].SetActive(false);
-        BossAttackBox[3].SetActive(false);
+        BossAttackBox[attack].SetActive(false);
     }
 }

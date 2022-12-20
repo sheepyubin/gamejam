@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//포탈 스크립트
 public class Portal : MonoBehaviour
 {
     public GameObject target;
     public GameObject to;
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //플레이어에게 닿았다면
     {
         if (collision.CompareTag("Player"))
         {
@@ -24,6 +25,6 @@ public class Portal : MonoBehaviour
     IEnumerator TeleportRoutine()
     {
         yield return null;
-        target.transform.position = to.transform.position;
+        target.transform.position = to.transform.position; //텔레포트
     }
 }

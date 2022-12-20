@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//카메라, 포탈 테스트용 
 public class move_test : MonoBehaviour
 {
     public float maxSpeed;

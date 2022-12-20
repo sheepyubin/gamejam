@@ -20,9 +20,18 @@ public class CamMove : MonoBehaviour
     float height;
     float width;
 
+
+    private void Awake()
+    {
+        Cam1.depth= 0;
+        Cam2.depth = -1;
+        Cam1.enabled = true;
+        Cam2.enabled = true;
+    }
+
     void Start()
     {
-        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
+        playerTransform = GameObject.Find("Player").GetComponent<Transform>(); //플레이어 위치
 
         height = Camera.main.orthographicSize;
         width = height * Screen.width / Screen.height;
@@ -33,7 +42,7 @@ public class CamMove : MonoBehaviour
         LimitCameraArea();
     }
 
-    void LimitCameraArea()
+    void LimitCameraArea() //카메라 범위
     {
         transform.position = Vector3.Lerp(transform.position,
                                           playerTransform.position + cameraPosition,
@@ -47,23 +56,35 @@ public class CamMove : MonoBehaviour
         transform.position = new Vector3(clampX, clampY, -10f);
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() //범위 그리기
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(center, mapSize * 2);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //카메라 전환 (스테이지 넘어 갈 때)
     {
         if (collision.CompareTag("Stage1"))
         {
-            Cam1.enabled = true;
-            Cam2.enabled = false;
+            Debug.Log("1");
+            ShowCam1View();
         }
         if (collision.CompareTag("Stage2"))
         {
-            Cam1.enabled = false;
-            Cam2.enabled = true;
+            Debug.Log("2");
+            ShowCam2View();
         }
+    }
+
+    public void ShowCam1View()
+    {
+        Cam1.enabled = true;
+        Cam2.enabled = false;
+    }
+
+    public void ShowCam2View()
+    {
+        Cam1.enabled = false;
+        Cam2.enabled = true;
     }
 }

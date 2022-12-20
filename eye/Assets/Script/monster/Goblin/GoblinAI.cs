@@ -4,13 +4,13 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MonsterAI : MonoBehaviour
+public class GoblinAI : MonoBehaviour
 {
     [SerializeField] GameObject Player;       //플레이어 따라가기 위한 플레이어 받아오기
     [SerializeField] GameObject AttackPoint;  //공격 범위 소환을 위한 프리펩 받아오기
     private Rigidbody2D monsterRigidbody;     //이동을 위한 리지드바디 받아오기
     new SpriteRenderer renderer;              //반짝이기 위해 렌더러 받아오기
-    public Animator animator;                 //애니메이터 설정
+    Animator animator;                        //애니메이터 설정
     public float MoveSpeed;                   //이동속도
     public float RotateSpeed;                 //회전속도
     public float delaytime;                   //딜레이 타임
@@ -141,7 +141,6 @@ public class MonsterAI : MonoBehaviour
         if (Attack == true)
         {
             Btime += Time.deltaTime;
-            Debug.Log("dwqdwq");
             if (Btime >= 0.48f)
             {
                 if (LR == true)

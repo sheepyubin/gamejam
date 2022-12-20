@@ -335,8 +335,8 @@ RectTransform:
   m_GameObject: {fileID: 1105594930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.3, y: 0.2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1763244989}
   m_Father: {fileID: 773510193}
@@ -344,7 +344,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 13.2}
+  m_AnchoredPosition: {x: -0.000002563, y: 11.43}
   m_SizeDelta: {x: 50, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1105594932
@@ -785,7 +785,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1371245451}
   AttackPoint: {fileID: 7929221275689378941, guid: cb989563533f18243bfcc156951ecb24, type: 3}
-  animator: {fileID: 0}
   MoveSpeed: 1
   RotateSpeed: 1
   delaytime: 0

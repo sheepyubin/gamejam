@@ -10,7 +10,6 @@ public class Attackted : MonoBehaviour
     public float HP = 100.0f;
     public float damage = 0.0f;
     public float delay = 0.3f;
-    bool dead = false;
     const short temp = 4;
     int i = 0;
     float Btime;
@@ -57,7 +56,6 @@ public class Attackted : MonoBehaviour
         }
         if (HP < 0)
         {
-            dead = true;
         }
         IsAttackted = true;
     }

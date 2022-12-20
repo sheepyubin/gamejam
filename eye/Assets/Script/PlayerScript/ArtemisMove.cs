@@ -23,6 +23,7 @@ public class ArtemisMove : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
+    Transform trans;
     public int jumpcount;
     int Jumpcnt;
 
@@ -102,13 +103,14 @@ public class ArtemisMove : MonoBehaviour
         if (rigid.velocity.x > maxSpeed)
         {  //¿À¸¥ÂÊ
             anim.SetBool("isLeft", false);
-            spriteRenderer.flipX = false;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            //spriteRenderer.flipX = false;
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         }
         else if (rigid.velocity.x < maxSpeed * (-1)) //¿ÞÂÊ
         {
             anim.SetBool("isLeft", true);
-            spriteRenderer.flipX = true;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         }
     }

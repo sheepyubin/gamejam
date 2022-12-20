@@ -54,6 +54,11 @@ public class RobinMove : MonoBehaviour
             anim.SetBool("isAttack", true);
         }
 
+        if (Input.GetKeyDown("x")) //스킬
+        {
+            anim.SetBool("isSkill", true);
+        }
+
         if (Input.GetButtonUp("Horizontal")) //속도제한
         {
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
@@ -69,6 +74,10 @@ public class RobinMove : MonoBehaviour
     public void IdleAnimation()
     {
         anim.SetBool("isAttack", false);
+    }
+    public void IdleAnimationSkill()
+    {
+        anim.SetBool("isSkill", false);
     }
 
     void FixedUpdate()

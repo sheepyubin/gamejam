@@ -73,9 +73,12 @@ public class MusasiMove : MonoBehaviour
 
     public void IdleAnimation()
     {
-        anim.SetBool("isSkill", false);
-        anim.SetBool("isWalk", false);
         anim.SetBool("isAttack", false);
+    }
+
+    public void IdleAnimationSkill()
+    {
+        anim.SetBool("isSkill", false);
     }
 
     void FixedUpdate()

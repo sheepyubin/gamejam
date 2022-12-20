@@ -13,7 +13,6 @@ public class ArtemisMove : MonoBehaviour
     Transform ArrowPos;
     [SerializeField]
     GameObject Arrow;
-    public float ArrowSpeed;
     [SerializeField]
     Transform pos;
     [SerializeField]

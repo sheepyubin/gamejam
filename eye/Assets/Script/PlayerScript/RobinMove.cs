@@ -9,6 +9,10 @@ public class RobinMove : MonoBehaviour
     public float dashpower; //대시
     bool isground;
     [SerializeField]
+    Transform ArrowPos;
+    [SerializeField]
+    GameObject Arrow;
+    [SerializeField]
     Transform pos;
     [SerializeField]
     float radius;
@@ -17,6 +21,7 @@ public class RobinMove : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
+    Transform trans;
     public int jumpcount;
     int Jumpcnt;
 
@@ -79,6 +84,10 @@ public class RobinMove : MonoBehaviour
     {
         anim.SetBool("isSkill", false);
     }
+    public void ShotArrow() //화살 프리팹 복제
+    {
+        Instantiate(Arrow, ArrowPos.position, transform.rotation);
+    }
 
     void FixedUpdate()
     {
@@ -88,12 +97,12 @@ public class RobinMove : MonoBehaviour
 
         if (rigid.velocity.x >= maxSpeed)
         {  //오른쪽
-            spriteRenderer.flipX = false;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         }
         else if (rigid.velocity.x <= maxSpeed * (-1)) //왼쪽
         {
-            spriteRenderer.flipX = true;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         }
     }

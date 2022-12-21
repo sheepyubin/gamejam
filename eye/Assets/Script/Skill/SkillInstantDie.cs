@@ -11,8 +11,9 @@ public class SkillInstantDie : MonoBehaviour
     void Start()
     {
         Angle = 0.0f;
+        Physics2D.IgnoreLayerCollision(6, 13, true);
     }
-    public void skillinstantdie()
+        public void skillinstantdie()
     {
         transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, Angle));
         Angle += AngleSpeed;

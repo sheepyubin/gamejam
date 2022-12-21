@@ -50,6 +50,7 @@ public class SkillCoolTimer : MonoBehaviour
             Debug.Log("아직 스킬을 사용할 수 없습니다.");
         }
     }
+
     IEnumerator Cooltime()
     {
         while (skillFilter.fillAmount > 0)

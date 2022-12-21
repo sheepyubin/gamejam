@@ -6,7 +6,6 @@ public class RobinMove : MonoBehaviour
 {
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
-    public float dashpower; //대시
     bool isground;
     [SerializeField]
     Transform ArrowPos;

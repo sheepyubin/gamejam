@@ -5,10 +5,26 @@ using UnityEngine.UI;
 
 public class EyesImage : MonoBehaviour
 {
+    [Header("Player")]
+    public GameObject NowPlayer;
+    public GameObject[] Players;
+    [Header("UI")]
     public Image EyeRenderer;
+    public Image SkillRenderer;
     public Sprite[] Eyes;
-    public void changeImage(int eye)
+    public Sprite[] SkillIcon;
+
+    Vector3 PlayerPos;
+    public void Update()
+    {
+        PlayerPos = NowPlayer.transform.position;
+    }
+    public void ChangePlayer(int eye)
     {
         EyeRenderer.sprite = Eyes[eye];
+        //SkillRenderer.sprite = SkillIcon[eye];
+        Instantiate(Players[eye], PlayerPos, Quaternion.identity);
+        Destroy(NowPlayer);
+        NowPlayer = Players[eye];
     }
 }

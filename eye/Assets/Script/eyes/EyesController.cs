@@ -32,7 +32,7 @@ public class EyesController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && isEyes == true)
         {
-            eyesImage.changeImage(playerIndex);
+            eyesImage.ChangePlayer(playerIndex);
             Destroy(gameObject);
         }
         else if (Input.GetKeyDown(KeyCode.F) && isEyes == true)

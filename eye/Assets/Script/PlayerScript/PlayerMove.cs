@@ -81,6 +81,11 @@ public class PlayerMove : MonoBehaviour
         anim.SetBool("isSkill", false);
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(pos.position, radius);
+    }
     void FixedUpdate()
     {
         float h = Input.GetAxisRaw("Horizontal");

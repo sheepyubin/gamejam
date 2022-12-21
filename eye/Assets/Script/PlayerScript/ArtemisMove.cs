@@ -7,23 +7,24 @@ public class ArtemisMove : MonoBehaviour
 {
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
+    public Vector2 Range;
+    public LayerMask Monster;
     bool isground;
-    [SerializeField]
-    Transform ArrowPos;
-    [SerializeField]
-    GameObject Arrow;
-    [SerializeField]
-    Transform pos;
-    [SerializeField]
-    float radius;
-    [SerializeField]
-    LayerMask layer;
+    [SerializeField] GameObject Skill;
+    Collider2D[] hit;
+    Vector3[] MonsterPos = new Vector3[20];
+    [SerializeField]    Transform ArrowPos;
+    [SerializeField]    GameObject Arrow;
+    [SerializeField]    Transform pos;
+    [SerializeField]    float radius;
+    [SerializeField]    LayerMask layer;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
     Transform trans;
     public int jumpcount;
     int Jumpcnt;
+    int i = 0;
 
     void Awake()
     {
@@ -31,6 +32,17 @@ public class ArtemisMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         Jumpcnt = jumpcount;
+    }
+    public void ArtemisSkill()
+    {
+        hit = Physics2D.OverlapBoxAll(transform.position, Range, 0, Monster); //몬스터에 닿았는가?
+        for (i = 0; i < hit.Length; i++)
+        {
+            MonsterPos[i] = hit[i].transform.position;
+            //Debug.Log("X: " + MonsterPos[i].x + " Y: " + MonsterPos[i].y);
+            //Instantiate(SkillPos, hit[i].transform.position, hit[i].transform.rotation);
+            Destroy(Instantiate(Skill, MonsterPos[i], Quaternion.identity), 0.4f);
+        }
     }
 
     void Update()
@@ -71,7 +83,12 @@ public class ArtemisMove : MonoBehaviour
         }
 
     }
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, Range);
+        Gizmos.DrawWireSphere(pos.position, radius);
+    }
     public void flipx()
     {
         spriteRenderer.flipX = false;

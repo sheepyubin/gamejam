@@ -6,12 +6,12 @@ public class ThorMove : MonoBehaviour
 {
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
-    public Vector2 size;
+    public Vector2 Range;
     public LayerMask Monster;
     [SerializeField] Transform SkillPos;
     [SerializeField] GameObject Skill;
     Collider2D[] hit;
-    Vector3[] MonsterPos;
+    Vector3[] MonsterPos = new Vector3[20];
     bool isground;
     [SerializeField]Transform pos;
     [SerializeField] float radius;
@@ -21,6 +21,7 @@ public class ThorMove : MonoBehaviour
     Animator anim;
     public int jumpcount;
     int Jumpcnt;
+    int i = 0;
 
     void Awake()
     {
@@ -33,12 +34,8 @@ public class ThorMove : MonoBehaviour
     void Update()
     {
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //땅에 닿았는가?
-       hit= Physics2D.OverlapBoxAll(transform.position, size, 0, Monster); //몬스터에 닿았는가?
-        for (int i = 0; i < hit.Length; i++)
-        {
-            MonsterPos[i] = hit[i].transform.position;
-            Debug.Log(MonsterPos[i]);
-        }
+        hit= Physics2D.OverlapBoxAll(transform.position, Range, 0, Monster); //몬스터에 닿았는가?
+
         if (isground == true && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 1
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
@@ -64,6 +61,8 @@ public class ThorMove : MonoBehaviour
         if (Input.GetKeyDown("x")) //스킬
         {
             anim.SetBool("isSkill", true);
+            SkillPosition();
+            PlaySkill();
         }
 
         if (Input.GetButtonUp("Horizontal")) //속도제한
@@ -81,12 +80,20 @@ public class ThorMove : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, size);
+        Gizmos.DrawWireCube(transform.position, Range);
     }
 
+    void SkillPosition()
+    {
+        for (i = 0; i < hit.Length; i++)
+        {
+            Instantiate(SkillPos, hit[i].transform.position, hit[i].transform.rotation);
+        }
+    }
     public void PlaySkill()
     {
-      //Instantiate(Skill, SkillPos.position, SkillPos.rotation);
+        Instantiate(Skill, SkillPos.position, SkillPos.rotation);
+        Destroy(SkillPos);
     }
     public void IdleAnimation()
     {

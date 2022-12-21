@@ -17,6 +17,7 @@ TagManager:
   - monster7
   - skill1
   - skill4
+  - Stage3
   layers:
   - Default
   - TransparentFX

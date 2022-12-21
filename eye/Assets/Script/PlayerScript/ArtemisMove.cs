@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class ArtemisMove : MonoBehaviour
 {
+    public Camera Cam1;
+    public Camera Cam2;
+    public Camera Cam3;
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
     public Vector2 Range;
@@ -107,6 +110,37 @@ public class ArtemisMove : MonoBehaviour
     public void ShotArrow() //화살 프리팹 복제
     {
         Instantiate(Arrow, ArrowPos.position, transform.rotation);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) //카메라 전환 (스테이지 넘어 갈 때)
+    {
+        if (collision.gameObject.tag == "Stage1")
+        {
+            ShowCam1View();
+        }
+        if (collision.gameObject.tag == "Stage2")
+        {
+            ShowCam2View();
+        }
+        if (collision.gameObject.tag == "Stage3")
+        {
+            ShowCam3View();
+        }
+    }
+    public void ShowCam1View()
+    {
+        Cam1.enabled = true;
+        Cam2.enabled = false;
+    }
+    public void ShowCam2View()
+    {
+        Cam1.enabled = false;
+        Cam2.enabled = true;
+    }
+    public void ShowCam3View()
+    {
+        Cam2.enabled = false;
+        Cam3.enabled = true;
     }
 
     void FixedUpdate()

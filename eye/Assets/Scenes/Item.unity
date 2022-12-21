@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 1258759682}
   m_Layer: 11
   m_Name: test floor 1
-  m_TagString: Stage1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -972,7 +972,7 @@ GameObject:
   - component: {fileID: 1456651263}
   m_Layer: 12
   m_Name: test floor 2
-  m_TagString: Stage2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

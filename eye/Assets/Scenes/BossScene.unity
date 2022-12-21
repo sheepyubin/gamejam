@@ -679,6 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba12320932e1b7b47902ac707bfaa711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossHp: {fileID: 1061714665}
   BossHitBox:
   - {fileID: 221781834}
   - {fileID: 418951611}
@@ -688,8 +689,9 @@ MonoBehaviour:
   - {fileID: 521230470}
   - {fileID: 177161555}
   BossSkill: {fileID: 5584308598469625209, guid: 63c2a05a4485de7459245f58e703e022, type: 3}
-  BossSkillspawn: []
   anime: {fileID: 0}
+  coolTime: 0
+  HP: 100
 --- !u!61 &495431739
 BoxCollider2D:
   m_ObjectHideFlags: 0

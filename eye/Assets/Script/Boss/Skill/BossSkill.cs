@@ -15,7 +15,7 @@ public class BossSkill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector2(x, -3.5f), 0.03f);
+        transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector2(x, -3.5f), 8f * Time.deltaTime);
         BossSkillAnime = GetComponent<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D collision)

@@ -15,6 +15,7 @@ TagManager:
   - monster5
   - monster6
   - monster7
+  - skill1
   layers:
   - Default
   - TransparentFX

@@ -3,43 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Attackted_Monster : MonoBehaviour
+public class FlyingEye_Attacked_Monster : MonoBehaviour
 {
     [SerializeField] GameObject DieMark;
     public Image HPBar;
     Animator animator;
     GameObject Mark;
-    float damage;
     bool IsDie;
     public bool skill4;
     public float HP;
     float Atime;
     float Btime;
-    bool temp = false;
     bool Spawn;
-    int i;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         HPBar.type = Image.Type.Filled;
-        damage = 0.0f;
         skill4 = false;
         IsDie = false;
         Atime = 0.0f;
         Btime = 0.0f;
-        i = 0;
         Spawn = false;
     }
 
     void MonsterAtteackted(float damage)
     {
         HP -= damage;
-        if(HP <= 0)
+        animator.SetBool("IsTakeHit", true);
+        if (HP <= 0)
         {
-            IsDie= true;
+            IsDie = true;
         }
-
+    }
+    public void TakeHit()
+    {
+        animator.SetBool("IsTakeHit", false);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -55,7 +54,7 @@ public class Attackted_Monster : MonoBehaviour
                 MonsterAtteackted(Random.Range(9, 13));
                 break;
             case "skill4":
-                skill4= true;
+                skill4 = true;
                 break;
             case "skill5":
                 MonsterAtteackted(Random.Range(10, 15));
@@ -82,27 +81,27 @@ public class Attackted_Monster : MonoBehaviour
     }
     void Update()
     {
-        HPBar.fillAmount = HP/30;
+        HPBar.fillAmount = HP / 30;
         if (skill4 == true)
         {
             if (Spawn == false)
             {
-                Spawn= true;
+                Spawn = true;
                 InstantDie.IsDieMark = true;
                 Mark = Instantiate(DieMark) as GameObject;
             }
-            if(InstantDie.IsDieMark == true)
+            if (InstantDie.IsDieMark == true)
                 Mark.transform.localPosition = new Vector3(transform.position.x, transform.position.y, transform.position.y);
             Atime += Time.deltaTime;
-            if(Atime >= 1.2f)
+            if (Atime >= 1.1f)
             {
                 Atime = 0.0f;
                 skill4 = false;
-                Spawn= false;
+                Spawn = false;
                 IsDie = true;
             }
         }
-        if(IsDie == true)
+        if (IsDie == true)
         {
             HP = 0.0f;
             animator.SetBool("IsDeath", true);

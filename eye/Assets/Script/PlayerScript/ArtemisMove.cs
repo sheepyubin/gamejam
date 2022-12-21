@@ -71,7 +71,11 @@ public class ArtemisMove : MonoBehaviour
         }
 
     }
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(pos.position, radius);
+    }
     public void flipx()
     {
         spriteRenderer.flipX = false;

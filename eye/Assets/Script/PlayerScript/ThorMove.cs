@@ -11,7 +11,6 @@ public class ThorMove : MonoBehaviour
     [SerializeField] GameObject Skill;
     Collider2D[] hit;
     Vector3[] MonsterPos = new Vector3[20];
-    Vector3[] MonsterRot = new Vector3[20];
     bool isground;
     [SerializeField]Transform pos;
     [SerializeField] float radius;
@@ -89,6 +88,7 @@ public class ThorMove : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, Range);
+        Gizmos.DrawWireSphere(pos.position, radius);
     }
     public void IdleAnimation()
     {

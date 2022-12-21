@@ -77,6 +77,11 @@ public class MusasiMove : MonoBehaviour
             anim.SetBool("isWalk", true);
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(pos.position, radius);
+    }
     public void IdleAnimation()
     {
         anim.SetBool("isAttack", false);

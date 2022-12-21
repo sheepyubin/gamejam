@@ -456,7 +456,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 333
-        y: 280
+        y: 276
         width: 25
         height: 10
       alignment: 0
@@ -4026,9 +4026,9 @@ TextureImporter:
       "\uB85C\uBE48\uD6C4\uB4DC 1_38": 401618893
       "\uB85C\uBE48\uD6C4\uB4DC 1_60": 250155725
       "\uB85C\uBE48\uD6C4\uB4DC 1_28": 1424196883
-      "\uB85C\uBE48\uD6C4\uB4DC 1_104": -42705797
-      "\uB85C\uBE48\uD6C4\uB4DC 1_25": 665420671
       "\uB85C\uBE48\uD6C4\uB4DC 1_85": -2127669537
+      "\uB85C\uBE48\uD6C4\uB4DC 1_25": 665420671
+      "\uB85C\uBE48\uD6C4\uB4DC 1_104": -42705797
       "\uB85C\uBE48\uD6C4\uB4DC 1_169": -906858223
       "\uB85C\uBE48\uD6C4\uB4DC 1_68": -334029969
       "\uB85C\uBE48\uD6C4\uB4DC 1_145": -1808891034

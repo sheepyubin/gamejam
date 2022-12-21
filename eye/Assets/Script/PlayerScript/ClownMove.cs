@@ -98,7 +98,11 @@ public class ClownMove : MonoBehaviour
         temp = true;
         anim.SetBool("isTime", false);
     }
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(pos.position, radius);
+    }
     public void IdleAnimation()
     {
         anim.SetBool("isAttack", false);

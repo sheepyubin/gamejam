@@ -7,22 +7,23 @@ public class RobinMove : MonoBehaviour
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
     bool isground;
-    [SerializeField]
-    Transform ArrowPos;
-    [SerializeField]
-    GameObject Arrow;
-    [SerializeField]
-    Transform pos;
-    [SerializeField]
-    float radius;
-    [SerializeField]
-    LayerMask layer;
+    public Vector2 Range;
+    public LayerMask Monster;
+    [SerializeField] GameObject Skill;
+    [SerializeField]Transform ArrowPos;
+    [SerializeField]GameObject Arrow;
+    [SerializeField]Transform pos;
+    [SerializeField]float radius;
+    [SerializeField]LayerMask layer;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
     Transform trans;
     public int jumpcount;
     int Jumpcnt;
+    int i = 0;
+    Collider2D[] hit;
+    Vector3[] MonsterPos = new Vector3[20];
 
     void Awake()
     {
@@ -32,21 +33,34 @@ public class RobinMove : MonoBehaviour
         Jumpcnt = jumpcount;
     }
 
+    public void ThorSkill()
+    {
+        hit = Physics2D.OverlapBoxAll(transform.position, Range, 0, Monster); //몬스터에 닿았는가?
+        for (i = 0; i < hit.Length; i++)
+        {
+            MonsterPos[i] = hit[i].transform.position;
+            //Debug.Log("X: " + MonsterPos[i].x + " Y: " + MonsterPos[i].y);
+            //Instantiate(SkillPos, hit[i].transform.position, hit[i].transform.rotation);
+            Destroy(Instantiate(Skill, MonsterPos[i], Quaternion.identity), 0.4f);
+        }
+    }
     void Update()
     {
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //땅에 닿았는가?
 
         if (isground == true && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 1
         {
+            Jumpcnt--; //n단
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
         if (isground == false && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 2
         {
+            Jumpcnt--; //n단
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
-        if (Input.GetKeyUp(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            Jumpcnt--; //n단
+           Jumpcnt--; //n단
         }
         if (isground)
         {
@@ -75,6 +89,12 @@ public class RobinMove : MonoBehaviour
             anim.SetBool("isWalk", true);
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, Range);
+        Gizmos.DrawWireSphere(pos.position, radius);
+    }
     public void IdleAnimation()
     {
         anim.SetBool("isAttack", false);

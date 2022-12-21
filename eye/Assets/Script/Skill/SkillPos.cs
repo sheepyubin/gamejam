@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attackted_Monster : MonoBehaviour
+public class SkillPos : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        Invoke("DestroyPos", 0.5f);
+    }
+
+    void DestroyPos()
+    {
+        Destroy(gameObject);
     }
 }

@@ -36,7 +36,10 @@ public class SkillCoolTimer : MonoBehaviour
     {
         if (canUseSkill)
         {
-            anim.SetBool("isSkill", true);
+            if (Input.GetKeyDown("x")) //½ºÅ³
+            {
+                anim.SetBool("isSkill", true);
+            }
             Debug.Log("Use Skill");
             skillFilter.fillAmount = 1;
             StartCoroutine("Cooltime");

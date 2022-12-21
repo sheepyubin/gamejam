@@ -22,8 +22,8 @@ public class RobinMove : MonoBehaviour
     public int jumpcount;
     int Jumpcnt;
     int i = 0;
-    Collider2D[] hit;
-    Vector3[] MonsterPos = new Vector3[20];
+    Collider2D hit;
+    Vector3 MonsterPos;
 
     void Awake()
     {
@@ -33,16 +33,14 @@ public class RobinMove : MonoBehaviour
         Jumpcnt = jumpcount;
     }
 
-    public void ThorSkill()
+    public void RobinSkill()
     {
-        hit = Physics2D.OverlapBoxAll(transform.position, Range, 0, Monster); //몬스터에 닿았는가?
-        for (i = 0; i < hit.Length; i++)
-        {
-            MonsterPos[i] = hit[i].transform.position;
-            //Debug.Log("X: " + MonsterPos[i].x + " Y: " + MonsterPos[i].y);
-            //Instantiate(SkillPos, hit[i].transform.position, hit[i].transform.rotation);
-            Destroy(Instantiate(Skill, MonsterPos[i], Quaternion.identity), 0.4f);
-        }
+        hit = Physics2D.OverlapBox(transform.position, Range, 0, Monster); //몬스터에 닿았는가?
+        MonsterPos = hit.transform.position;
+        Instantiate(Skill, ArrowPos.position                                                      , Quaternion.identity);
+        //Skill.transform.position = Vector3.MoveTowards(Skill.transform.position, MonsterPos, 0);
+        //Instantiate(SkillPos, hit[i].transform.position, hit[i].transform.rotation);
+        //Destroy(Instantiate(Skill, MonsterPos, Quaternion.identity), 0.4f);
     }
     void Update()
     {

@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class GoblinAI : MonoBehaviour
 {
+    [SerializeField] GameObject PosEmpty;
     [SerializeField] GameObject AttackPoint;  //공격 범위 소환을 위한 프리펩 받아오기
     private Rigidbody2D monsterRigidbody;     //이동을 위한 리지드바디 받아오기
     new SpriteRenderer renderer;              //반짝이기 위해 렌더러 받아오기
@@ -69,19 +70,13 @@ public class GoblinAI : MonoBehaviour
         transform.rotation = Quaternion.Euler(0,0,0);
         if (IsPlayerTrigger == true)
         {
-            Vector2 rot = new Vector2(transform.position.x - PlayerMove.PlayerPos.x, transform.position.y - PlayerMove.PlayerPos.y);
-            float Angle = Mathf.Atan2(rot.x, rot.y) * Mathf.Rad2Deg * -1;
-            Quaternion angleAxis = Quaternion.AngleAxis(Angle, Vector3.forward);
-            Quaternion rotation = Quaternion.Slerp(transform.rotation, angleAxis, RotateSpeed * Time.deltaTime);
-            transform.rotation = rotation;
-            //플레이어를 쳐다볼 수 있도록 플레이어와 자신으로 atan2연산, Slerp연산 후 나온 결과로 각도 변경
 
             if (PlayerMove.PlayerPos.x - 1 < transform.position.x)
             {
                 animator.SetBool("IsRun", true); 
                 renderer.flipX = true;
                 Vector3 newVelocity = new Vector3(-MoveSpeed, 0.0f, 0.0f);
-                monsterRigidbody.velocity = newVelocity;
+                PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
                 LR = true;
             }
             if (PlayerMove.PlayerPos.x + 1 > transform.position.x)
@@ -89,7 +84,7 @@ public class GoblinAI : MonoBehaviour
                 animator.SetBool("IsRun", true);
                 renderer.flipX = false;
                 Vector3 newVelocity = new Vector3(MoveSpeed, 0.0f, 0.0f);
-                monsterRigidbody.velocity = newVelocity;
+                PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
                 LR = false;
             }
             //플레이어와 자신의 좌표 비교, 플레이어 방향으로 이동
@@ -101,7 +96,7 @@ public class GoblinAI : MonoBehaviour
                 animator.SetBool("IsRun", false);
                 Atime += Time.deltaTime;
                 Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * 0;
-                monsterRigidbody.velocity = newVelocity;
+                PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
                 if (Atime >= 1)
                 {
                     renderer.flipX = LR ? true : false;
@@ -127,14 +122,14 @@ public class GoblinAI : MonoBehaviour
                     {
                         animator.SetBool("IsRun", true);
                         Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * -1;
-                        monsterRigidbody.velocity = newVelocity;
+                        PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
 
                     }
                     if (LR == false)
                     {
                         animator.SetBool("IsRun", true);
                         Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * 1;
-                        monsterRigidbody.velocity = newVelocity;
+                        PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
                     }
                 }
             }

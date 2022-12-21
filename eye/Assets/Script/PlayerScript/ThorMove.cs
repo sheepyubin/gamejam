@@ -35,6 +35,12 @@ public class ThorMove : MonoBehaviour
     {
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //땅에 닿았는가?
         hit= Physics2D.OverlapBoxAll(transform.position, Range, 0, Monster); //몬스터에 닿았는가?
+        for (i = 0; i < hit.Length; i++)
+        {
+            MonsterPos[i] = hit[i].transform.position;
+            //Debug.Log("X: " + MonsterPos[i].x + " Y: " + MonsterPos[i].y);
+            //Instantiate(SkillPos, hit[i].transform.position, hit[i].transform.rotation);
+        }
 
         if (isground == true && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 1
         {
@@ -61,8 +67,6 @@ public class ThorMove : MonoBehaviour
         if (Input.GetKeyDown("x")) //스킬
         {
             anim.SetBool("isSkill", true);
-            SkillPosition();
-            PlaySkill();
         }
 
         if (Input.GetButtonUp("Horizontal")) //속도제한
@@ -75,25 +79,13 @@ public class ThorMove : MonoBehaviour
             anim.SetBool("isWalk", false);
         else
             anim.SetBool("isWalk", true);
+
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, Range);
-    }
-
-    void SkillPosition()
-    {
-        for (i = 0; i < hit.Length; i++)
-        {
-            Instantiate(SkillPos, hit[i].transform.position, hit[i].transform.rotation);
-        }
-    }
-    public void PlaySkill()
-    {
-        Instantiate(Skill, SkillPos.position, SkillPos.rotation);
-        Destroy(SkillPos);
     }
     public void IdleAnimation()
     {

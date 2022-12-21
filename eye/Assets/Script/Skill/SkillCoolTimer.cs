@@ -16,6 +16,7 @@ public class SkillCoolTimer : MonoBehaviour
     [SerializeField]
     private Button[] actionButtons;
     public KeyCode[] action;
+    Animator anim;
     void Start()
     {
         
@@ -31,10 +32,32 @@ public class SkillCoolTimer : MonoBehaviour
     {
         actionButtons[btnIndex].onClick.Invoke();
     }
-    public void UseSkill()
+    public void UseThorSkill()
     {
         if (canUseSkill)
         {
+            anim.SetBool("isSkill", true);
+            Debug.Log("Use Skill");
+            skillFilter.fillAmount = 1;
+            StartCoroutine("Cooltime");
+
+            currentCoolTime = coolTime;
+
+            StartCoroutine("CoolTimeCounter");
+
+            canUseSkill = false;
+        }
+        else
+        {
+            Debug.Log("아직 스킬을 사용할 수 없습니다.");
+        }
+    }
+
+    public void UseMusasiSkill()
+    {
+        if (canUseSkill)
+        {
+            anim.SetBool("isSkill", true);
             Debug.Log("Use Skill");
             skillFilter.fillAmount = 1;
             StartCoroutine("Cooltime");

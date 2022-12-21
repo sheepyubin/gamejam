@@ -1,12 +1,24 @@
 fileFormatVersion: 2
-guid: 39eead7d2c6c76a40b64c7c676286da1
+guid: c5b15ca3a0987ac46b73e4a04e12eeb2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4035959289877228764
+    second: Walk_0
+  - first:
+      213: -982904232830982447
+    second: Walk_1
+  - first:
+      213: -350908408369970039
+    second: Walk_2
+  - first:
+      213: -5409570386352685021
+    second: Walk_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -62,7 +74,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -89,7 +101,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -101,7 +113,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -116,13 +140,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uB208\uC313\uC778\uB9F53_plants_0"
+      name: Walk_0
       rect:
         serializedVersion: 2
-        x: 408
-        y: 672
-        width: 144
-        height: 160
+        x: 0
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +154,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d44372ea00cb8d148bdc5aa5fe4a1eff
-      internalID: 1532435942
+      spriteID: 3f9a3876a99df914da548f46e60ad6a3
+      internalID: 4035959289877228764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uB208\uC313\uC778\uB9F53_plants_1"
+      name: Walk_1
       rect:
         serializedVersion: 2
-        x: 544
-        y: 672
-        width: 16
-        height: 24
+        x: 150
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43be8b310fe178841868c5560021eb23
-      internalID: -1466018687
+      spriteID: 30bb9e9e4df42a74fb21bd99d94251b0
+      internalID: -982904232830982447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uB208\uC313\uC778\uB9F53_plants_2"
+      name: Walk_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 264
-        width: 192
-        height: 200
+        x: 300
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1141d285f5ea64499b806ffb83d3ab0
-      internalID: -1091481743
+      spriteID: 87869644d0d29074f9c24a61300d4dee
+      internalID: -350908408369970039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uB208\uC313\uC778\uB9F53_plants_3"
+      name: Walk_3
       rect:
         serializedVersion: 2
-        x: 888
-        y: 264
-        width: 128
-        height: 184
+        x: 450
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,29 +217,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dceec5cb83037d94090f0a5c77702248
-      internalID: 1256021726
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uB208\uC313\uC778\uB9F53_plants_4"
-      rect:
-        serializedVersion: 2
-        x: 1656
-        y: 264
-        width: 232
-        height: 232
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b91ef9f5d8782ca4a9ea9e69a45e6a60
-      internalID: -2105013702
+      spriteID: c9b8e1e91c1e8bd488a7ee1cd7af5230
+      internalID: -5409570386352685021
       vertices: []
       indices: 
       edges: []
@@ -231,11 +234,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uB208\uC313\uC778\uB9F53_plants_2": -1091481743
-      "\uB208\uC313\uC778\uB9F53_plants_0": 1532435942
-      "\uB208\uC313\uC778\uB9F53_plants_3": 1256021726
-      "\uB208\uC313\uC778\uB9F53_plants_4": -2105013702
-      "\uB208\uC313\uC778\uB9F53_plants_1": -1466018687
+      Walk_0: 4035959289877228764
+      Walk_2: -350908408369970039
+      Walk_3: -5409570386352685021
+      Walk_1: -982904232830982447
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -7,30 +7,29 @@ public class ReaperGetKey : MonoBehaviour
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
     bool isground;
-    [SerializeField]
-    Transform pos;
-    [SerializeField]
-    float radius;
-    [SerializeField]
-    LayerMask layer;
-    Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
+    [SerializeField] Transform pos;
+    [SerializeField] GameObject trans;
+    [SerializeField] float radius;
+    [SerializeField] LayerMask layer;
+    [SerializeField] GameObject nat;
+    Rigidbody2D rigid;
     Animator anim;
     public int jumpcount;
     int Jumpcnt;
-    public static Vector3 PlayerPos;
+    bool SpawnNat;
 
     void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         Jumpcnt = jumpcount;
     }
-
     void Update()
     {
-        PlayerPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        PlayerPos.tra = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //땅에 닿았는가?
 
         if (isground == true && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 1
@@ -58,6 +57,7 @@ public class ReaperGetKey : MonoBehaviour
         if (Input.GetKeyDown("x")) //스킬
         {
             anim.SetBool("isSkill", true);
+            Instantiate(nat,trans.transform);
         }
 
         if (Input.GetButtonUp("Horizontal")) //속도제한
@@ -89,12 +89,14 @@ public class ReaperGetKey : MonoBehaviour
 
         if (rigid.velocity.x >= maxSpeed)
         {  //오른쪽
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            //transform.rotation = Quaternion.Euler(0, 0, 0);
+            spriteRenderer.flipX= false;
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         }
         else if (rigid.velocity.x <= maxSpeed * (-1)) //왼쪽
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            spriteRenderer.flipX = true;
+            //transform.rotation = Quaternion.Euler(0, 180, 0);
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         }
     }

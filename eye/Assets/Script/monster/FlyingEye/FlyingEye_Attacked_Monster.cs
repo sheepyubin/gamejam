@@ -16,6 +16,10 @@ public class FlyingEye_Attacked_Monster : MonoBehaviour
     float Btime;
     bool Spawn;
 
+    public void FlyingEye_Idle()
+    {
+        animator.SetBool("IsTackAttack_FlyingEye", false);
+    }
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -30,7 +34,7 @@ public class FlyingEye_Attacked_Monster : MonoBehaviour
     void MonsterAtteackted(float damage)
     {
         HP -= damage;
-        animator.SetBool("IsTakeHit", true);
+        animator.SetBool("IsTackAttack_FlyingEye", true);
         if (HP <= 0)
         {
             IsDie = true;
@@ -38,7 +42,7 @@ public class FlyingEye_Attacked_Monster : MonoBehaviour
     }
     public void TakeHit()
     {
-        animator.SetBool("IsTakeHit", false);
+        animator.SetBool("IsTackAttack_FlyingEye", false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -89,27 +93,30 @@ public class FlyingEye_Attacked_Monster : MonoBehaviour
         HPBar.fillAmount = HP / 30;
         if (skill4 == true)
         {
-            if (Spawn == false)
+            if (IsDie == false)
             {
-                Spawn = true;
-                InstantDie.IsDieMark = true;
-                Mark = Instantiate(DieMark) as GameObject;
-            }
-            if (InstantDie.IsDieMark == true)
-                Mark.transform.localPosition = new Vector3(transform.position.x, transform.position.y, transform.position.y);
-            Atime += Time.deltaTime;
-            if (Atime >= 1.1f)
-            {
-                Atime = 0.0f;
-                skill4 = false;
-                Spawn = false;
-                IsDie = true;
+                if (Spawn == false)
+                {
+                    Spawn = true;
+                    InstantDie.IsDieMark = true;
+                    Mark = Instantiate(DieMark) as GameObject;
+                }
+                if (InstantDie.IsDieMark == true)
+                    Mark.transform.localPosition = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+                Atime += Time.deltaTime;
+                if (Atime >= 1.1f)
+                {
+                    Atime = 0.0f;
+                    skill4 = false;
+                    Spawn = false;
+                    IsDie = true;
+                }
             }
         }
         if (IsDie == true)
         {
             HP = 0.0f;
-            animator.SetBool("IsDeath", true);
+            animator.SetBool("IsDeath_FlyEye", true);
             Btime += Time.deltaTime;
             if (Btime >= 1.0f)
             {

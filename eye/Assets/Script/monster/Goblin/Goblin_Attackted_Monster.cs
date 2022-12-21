@@ -89,21 +89,24 @@ public class Goblin_Attackted_Monster : MonoBehaviour
         HPBar.fillAmount = HP/30;
         if (skill4 == true)
         {
-            if (Spawn == false)
+            if (IsDie == false)
             {
-                Spawn= true;
-                InstantDie.IsDieMark = true;
-                Mark = Instantiate(DieMark) as GameObject;
-            }
-            if(InstantDie.IsDieMark == true)
-                Mark.transform.localPosition = new Vector3(transform.position.x, transform.position.y, transform.position.y);
-            Atime += Time.deltaTime;
-            if(Atime >= 1.1f)
-            {
-                Atime = 0.0f;
-                skill4 = false;
-                Spawn= false;
-                IsDie = true;
+                if (Spawn == false)
+                {
+                    Spawn = true;
+                    InstantDie.IsDieMark = true;
+                    Mark = Instantiate(DieMark) as GameObject;
+                }
+                if (InstantDie.IsDieMark == true)
+                    Mark.transform.localPosition = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+                Atime += Time.deltaTime;
+                if (Atime >= 1.1f)
+                {
+                    Atime = 0.0f;
+                    skill4 = false;
+                    Spawn = false;
+                    IsDie = true;
+                }
             }
         }
         if(IsDie == true)

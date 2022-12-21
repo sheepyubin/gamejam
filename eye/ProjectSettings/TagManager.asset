@@ -16,6 +16,7 @@ TagManager:
   - monster6
   - monster7
   - skill1
+  - skill4
   layers:
   - Default
   - TransparentFX
@@ -29,8 +30,8 @@ TagManager:
   - PlayerAttack
   - Boss
   - BossAttack
-  - 
-  - 
+  - Lending
+  - Skill
   - 
   - 
   - 

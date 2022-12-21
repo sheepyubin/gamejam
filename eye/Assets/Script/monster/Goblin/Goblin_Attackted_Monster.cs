@@ -40,6 +40,14 @@ public class Goblin_Attackted_Monster : MonoBehaviour
     {
         animator.SetBool("IsTakeHit", false);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("skill4"))
+        {
+
+            skill4 = true;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (collision.gameObject.tag)
@@ -52,9 +60,6 @@ public class Goblin_Attackted_Monster : MonoBehaviour
                 break;
             case "skill3":
                 MonsterAtteackted(Random.Range(9, 13));
-                break;
-            case "skill4":
-                skill4= true;
                 break;
             case "skill5":
                 MonsterAtteackted(Random.Range(10, 15));
@@ -107,7 +112,10 @@ public class Goblin_Attackted_Monster : MonoBehaviour
             animator.SetBool("IsDeath", true);
             Btime += Time.deltaTime;
             if (Btime >= 1.0f)
+            {
+                Destroy(transform.parent.gameObject);
                 Destroy(gameObject);
+            }
         }
     }
 }

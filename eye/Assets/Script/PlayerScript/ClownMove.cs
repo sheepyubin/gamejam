@@ -6,9 +6,10 @@ public class ClownMove : MonoBehaviour
 {
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
-    public float dashpower; //대시
     bool isground;
     public float time;
+    public float cooltime;
+    bool temp;
     [SerializeField]
     Transform ArrowPos;
     [SerializeField]
@@ -32,6 +33,7 @@ public class ClownMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         Jumpcnt = jumpcount;
+        temp = true;
     }
 
     void Update()
@@ -62,9 +64,12 @@ public class ClownMove : MonoBehaviour
 
         if (Input.GetKeyDown("x")) //스킬
         {
+            if (temp)
+            {
             anim.SetBool("isSkill", true);
-            Invoke("ItTime", time * 3 / 4);
-            Invoke("TimeEnd", time);
+            //Invoke("ItTime", time * 3 / 4);
+            Invoke("TimeEnd", time);                                
+            }
         }
 
         if (Input.GetButtonUp("Horizontal")) //속도제한
@@ -74,7 +79,9 @@ public class ClownMove : MonoBehaviour
         }
 
         if (Mathf.Abs(rigid.velocity.x) < 0.01) //Idle or walk
+        {
             anim.SetBool("isWalk", false);
+        }
         else
             anim.SetBool("isWalk", true);
     }
@@ -82,11 +89,16 @@ public class ClownMove : MonoBehaviour
     void TimeEnd()
     {
         anim.SetBool("isTime", true);
+        Invoke("TimeEnd2", cooltime);
+        temp = false;
     }
-    void ItTime()
-    {
 
+    void TimeEnd2()
+    {
+        temp = true;
+        anim.SetBool("isTime", false);
     }
+
     public void IdleAnimation()
     {
         anim.SetBool("isAttack", false);

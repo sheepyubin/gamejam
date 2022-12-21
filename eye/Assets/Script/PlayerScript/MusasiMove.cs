@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class MusasiMove : MonoBehaviour
 {
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
     bool isground;
+    [SerializeField]
+    Transform SkillPos;
+    [SerializeField]
+    GameObject Skill;
+    [SerializeField]
+    GameObject Skill2;
     [SerializeField]
     Transform pos;
     [SerializeField]
@@ -16,6 +22,7 @@ public class PlayerMove : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
+    Transform trans;
     public int jumpcount;
     int Jumpcnt;
 
@@ -78,6 +85,16 @@ public class PlayerMove : MonoBehaviour
     {
         anim.SetBool("isSkill", false);
     }
+
+    public void PlaySkill()
+    {
+        Instantiate(Skill, SkillPos.position, transform.rotation);
+    }
+    public void PlaySkill2()
+    {
+        Instantiate(Skill2,SkillPos.position, transform.rotation);
+    }
+
 
     void FixedUpdate()
     {

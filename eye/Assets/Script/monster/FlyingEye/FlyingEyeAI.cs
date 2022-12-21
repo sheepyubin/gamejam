@@ -78,14 +78,14 @@ public class FlyingEyeAI : MonoBehaviour
 
             //플레이어를 쳐다볼 수 있도록 플레이어와 자신으로 atan2연산, Slerp연산 후 나온 결과로 각도 변경
 
-            if (PlayerMove.PlayerPos.x - 1 < transform.position.x)
+            if (PlayerPos.tra.x < transform.position.x)
             {
                 renderer.flipX = true;
                 Vector3 newVelocity = new Vector3(-MoveSpeed, 0.0f, 0.0f);
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
                 LR = true;
             }
-            if (PlayerMove.PlayerPos.x + 1 > transform.position.x)
+            if (PlayerPos.tra.x > transform.position.x)
             {
                 renderer.flipX = false;
                 Vector3 newVelocity = new Vector3(MoveSpeed, 0.0f, 0.0f);
@@ -118,7 +118,6 @@ public class FlyingEyeAI : MonoBehaviour
                 {
                     IsDelay = true;
                     Btime = 0.0f;
-                    LR = LR = LR ? false : true;
                 }
                 else
                 {

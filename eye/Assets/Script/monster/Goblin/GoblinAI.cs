@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class GoblinAI : MonoBehaviour
 {
-    [SerializeField] GameObject Player;       //플레이어 따라가기 위한 플레이어 받아오기
     [SerializeField] GameObject AttackPoint;  //공격 범위 소환을 위한 프리펩 받아오기
     private Rigidbody2D monsterRigidbody;     //이동을 위한 리지드바디 받아오기
     new SpriteRenderer renderer;              //반짝이기 위해 렌더러 받아오기
@@ -26,7 +25,7 @@ public class GoblinAI : MonoBehaviour
         monsterRigidbody = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        MoveSpeed = 3.0f;
+        MoveSpeed = 1.5f;
         RotateSpeed = 0.6f;
         delaytime = 1.5f;
         IsPlayerTrigger = false;
@@ -68,22 +67,22 @@ public class GoblinAI : MonoBehaviour
     {
         if (IsPlayerTrigger == true)
         {
-            //Vector2 rot = new Vector2(transform.position.x - Player.transform.position.x, transform.position.y - Player.transform.position.y);
-            //float Angle = Mathf.Atan2(rot.x, rot.y) * Mathf.Rad2Deg * -1;
-            //Quaternion angleAxis = Quaternion.AngleAxis(Angle, Vector3.forward);
-            //Quaternion rotation = Quaternion.Slerp(transform.rotation, angleAxis, RotateSpeed * Time.deltaTime);
-            //transform.rotation = rotation;
+            Vector2 rot = new Vector2(transform.position.x - PlayerMove.PlayerPos.x, transform.position.y - PlayerMove.PlayerPos.y);
+            float Angle = Mathf.Atan2(rot.x, rot.y) * Mathf.Rad2Deg * -1;
+            Quaternion angleAxis = Quaternion.AngleAxis(Angle, Vector3.forward);
+            Quaternion rotation = Quaternion.Slerp(transform.rotation, angleAxis, RotateSpeed * Time.deltaTime);
+            transform.rotation = rotation;
             //플레이어를 쳐다볼 수 있도록 플레이어와 자신으로 atan2연산, Slerp연산 후 나온 결과로 각도 변경
 
-            if (Player.transform.position.x - 1 < transform.position.x)
+            if (PlayerMove.PlayerPos.x - 1 < transform.position.x)
             {
-                animator.SetBool("IsRun", true);
+                animator.SetBool("IsRun", true); 
                 renderer.flipX = true;
                 Vector3 newVelocity = new Vector3(-MoveSpeed, 0.0f, 0.0f);
                 monsterRigidbody.velocity = newVelocity;
                 LR = true;
             }
-            if (Player.transform.position.x + 1 > transform.position.x)
+            if (PlayerMove.PlayerPos.x + 1 > transform.position.x)
             {
                 animator.SetBool("IsRun", true);
                 renderer.flipX = false;
@@ -145,14 +144,14 @@ public class GoblinAI : MonoBehaviour
             {
                 if (LR == true)
                 {
-                    Vector3 AttackPrePos = new Vector3(this.transform.position.x - 1.1f, transform.position.y, transform.position.z);
+                    Vector3 AttackPrePos = new Vector3(transform.position.x - 1.7f, transform.position.y - 0.3f, transform.position.z);
                     Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.3f);
                     Attack = false;
                     Btime = 0.0f;
                 }
                 else if (LR == false)
                 {
-                    Vector3 AttackPrePos = new Vector3(transform.position.x + 1.1f, transform.position.y, transform.position.z);
+                    Vector3 AttackPrePos = new Vector3(transform.position.x + 1.7f, transform.position.y - 0.3f, transform.position.z);
                     Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.3f);
                     Attack = false;
                     Btime = 0.0f;

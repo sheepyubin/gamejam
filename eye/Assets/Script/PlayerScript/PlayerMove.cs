@@ -19,6 +19,7 @@ public class PlayerMove : MonoBehaviour
     Animator anim;
     public int jumpcount;
     int Jumpcnt;
+    public static Vector3 PlayerPos;
 
     void Awake()
     {
@@ -30,6 +31,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        PlayerPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //¶¥¿¡ ´ê¾Ò´Â°¡?
 
         if (isground == true && Input.GetKeyDown("c") && Jumpcnt > 0) //Á¡ÇÁ 1

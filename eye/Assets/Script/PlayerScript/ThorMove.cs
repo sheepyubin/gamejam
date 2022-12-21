@@ -11,8 +11,7 @@ public class ThorMove : MonoBehaviour
     [SerializeField] Transform SkillPos;
     [SerializeField] GameObject Skill;
     Collider2D[] hit;
-    float[] MonsterX;
-    float[] MonsterY;
+    Vector3[] MonsterPos;
     bool isground;
     [SerializeField]Transform pos;
     [SerializeField] float radius;
@@ -37,10 +36,8 @@ public class ThorMove : MonoBehaviour
        hit= Physics2D.OverlapBoxAll(transform.position, size, 0, Monster); //몬스터에 닿았는가?
         for (int i = 0; i < hit.Length; i++)
         {
-            MonsterX[i] = hit[i].transform.position.x;
-            MonsterY[i] = hit[i].transform.position.y;
-            Debug.Log(MonsterX[i]);
-            Debug.Log(MonsterY[i]);
+            MonsterPos[i] = hit[i].transform.position;
+            Debug.Log(MonsterPos[i]);
         }
         if (isground == true && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 1
         {

@@ -6,7 +6,6 @@ public class PlayerMove : MonoBehaviour
 {
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
-    public float dashpower; //대시
     bool isground;
     [SerializeField]
     Transform pos;
@@ -90,12 +89,12 @@ public class PlayerMove : MonoBehaviour
 
         if (rigid.velocity.x >= maxSpeed)
         {  //오른쪽
-            spriteRenderer.flipX = false;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         }
         else if (rigid.velocity.x <= maxSpeed * (-1)) //왼쪽
         {
-            spriteRenderer.flipX = true;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         }
     }

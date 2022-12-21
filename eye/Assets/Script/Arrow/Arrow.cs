@@ -8,7 +8,7 @@ public class Arrow : MonoBehaviour
     public float speed;
     void Start()
     {
-        Invoke("DestroyArrow", 3); //3초 후 파괴
+        Invoke("DestroyArrow", 2); //3초 후 파괴
     }
     void Update()
     {

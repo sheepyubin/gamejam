@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class ArtemisMove : MonoBehaviour
+public class ClownMove : MonoBehaviour
 {
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
     public float dashpower; //대시
     bool isground;
+    public float time;
     [SerializeField]
     Transform ArrowPos;
     [SerializeField]
@@ -38,9 +38,9 @@ public class ArtemisMove : MonoBehaviour
     {
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //땅에 닿았는가?
 
-        if (isground == true && Input.GetKeyDown("c")&&Jumpcnt>0) //점프 1
+        if (isground == true && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 1
         {
-                rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
         if (isground == false && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 2
         {
@@ -63,6 +63,8 @@ public class ArtemisMove : MonoBehaviour
         if (Input.GetKeyDown("x")) //스킬
         {
             anim.SetBool("isSkill", true);
+            Invoke("ItTime", time * 3 / 4);
+            Invoke("TimeEnd", time);
         }
 
         if (Input.GetButtonUp("Horizontal")) //속도제한
@@ -71,23 +73,28 @@ public class ArtemisMove : MonoBehaviour
 
         }
 
+        if (Mathf.Abs(rigid.velocity.x) < 0.01) //Idle or walk
+            anim.SetBool("isWalk", false);
+        else
+            anim.SetBool("isWalk", true);
     }
 
-    public void flipx()
+    void TimeEnd()
     {
-        spriteRenderer.flipX = false;
+        anim.SetBool("isTime", true);
     }
+    void ItTime()
+    {
 
+    }
     public void IdleAnimation()
     {
         anim.SetBool("isAttack", false);
     }
-
     public void IdleAnimationSkill()
     {
         anim.SetBool("isSkill", false);
     }
-
     public void ShotArrow() //화살 프리팹 복제
     {
         Instantiate(Arrow, ArrowPos.position, transform.rotation);
@@ -99,19 +106,15 @@ public class ArtemisMove : MonoBehaviour
         rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse); //이동
 
 
-        if (rigid.velocity.x > maxSpeed)
+        if (rigid.velocity.x >= maxSpeed)
         {  //오른쪽
-            anim.SetBool("isLeft", false);
             transform.rotation = Quaternion.Euler(0, 0, 0);
-            //spriteRenderer.flipX = false;
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         }
-        else if (rigid.velocity.x < maxSpeed * (-1)) //왼쪽
+        else if (rigid.velocity.x <= maxSpeed * (-1)) //왼쪽
         {
-            anim.SetBool("isLeft", true);
             transform.rotation = Quaternion.Euler(0, 180, 0);
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         }
     }
 }
-

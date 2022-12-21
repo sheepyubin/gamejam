@@ -7,13 +7,13 @@ using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 public class Attackted : MonoBehaviour
 {
     new SpriteRenderer renderer;
+    new Rigidbody2D rigidbody2D;
     public float HP = 100.0f;
     public float damage = 0.0f;
     public float delay = 0.3f;
     const short temp = 4;
     int i = 0;
     float Btime;
-    float Atime;
     bool IsTansparency;
     bool IsAttackted = false;
 
@@ -22,26 +22,36 @@ public class Attackted : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "monster1":
+                IsAttackted = true;
                 damage = 1.0f;
                 attackted(damage);
                 break;
             case "monster2":
+                IsAttackted = true;
                 damage = 4.0f;
                 attackted(damage);
                 break;
             case "monster3":
+                IsAttackted = true;
                 damage = 9.0f;
                 attackted(damage);
                 break;
             case "monster4":
+                IsAttackted = true;
                 damage = 14.0f;
                 attackted(damage);
                 break;
         }
-        IsAttackted = true;
+    }
+    void Die()
+    {
+        rigidbody2D.gravityScale = 12.0f;
+        Physics2D.IgnoreLayerCollision(6, 3, true);
+
     }
     private void Start()
     {
+        rigidbody2D = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
         IsTansparency = false;
         IsAttackted = false;
@@ -52,10 +62,10 @@ public class Attackted : MonoBehaviour
         {
             IsAttackted = true;
             HP -= damage;
-
         }
         if (HP < 0)
         {
+            Die();
         }
         IsAttackted = true;
     }
@@ -63,8 +73,9 @@ public class Attackted : MonoBehaviour
     {
         if (IsAttackted == true)
         {
+            Physics2D.IgnoreLayerCollision(6, 12, true);
             Btime += Time.deltaTime;
-            if (Btime > delay)
+            if (Btime >= delay)
             {
                 IsTansparency = !IsTansparency;
                 if (IsTansparency)
@@ -79,16 +90,20 @@ public class Attackted : MonoBehaviour
                     renderer.color = new Color(1, 1, 1, 1.0f);
                     Btime = 0.0f;
                 }
-                if (i >= temp)
-                {
-                    i = 0;
-                    IsAttackted = false;
-                }
+                
+            }
+            if (i >= temp)
+            {
+                i = 0;
+                IsAttackted = false;
+                Btime= 0.0f;
+                Physics2D.IgnoreLayerCollision(6, 12, false);
             }
         }
         else
         {
             Debug.Log(HP);
+            
         }
     }
 }

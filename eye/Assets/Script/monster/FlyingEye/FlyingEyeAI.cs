@@ -40,7 +40,7 @@ public class FlyingEyeAI : MonoBehaviour
         if (collision.gameObject.layer == 6)
         {
             IsPlayerTrigger = true;
-            //animator.SetBool("IsAttack", true);
+            animator.SetBool("IsAttack_FlyEye", true);
             Attack = true;
         }
     }
@@ -51,16 +51,16 @@ public class FlyingEyeAI : MonoBehaviour
             TempTimeA += Time.deltaTime;
             if (TempTimeA >= 0.6f)
             {
-                //animator.SetBool("IsAttack", true);
+                animator.SetBool("IsAttack_FlyEye", true);
                 IsPlayerTrigger = true;
                 TempTimeA = 0.0f;
                 Attack = true;
             }
         }
     }
-    public void Idle()
+    public void FlyEye_Idle()
     {
-        //animator.SetBool("IsAttack", false);
+        animator.SetBool("IsAttack_FlyEye", false);
     }
     void Update()
     {
@@ -114,7 +114,7 @@ public class FlyingEyeAI : MonoBehaviour
             else if (IsDelay == false)
             {
                 Btime += Time.deltaTime;
-                if (Btime > 1.7f)
+                if (Btime > 1.4f)
                 {
                     IsDelay = true;
                     Btime = 0.0f;
@@ -124,14 +124,12 @@ public class FlyingEyeAI : MonoBehaviour
                 {
                     if (LR == true)
                     {
-                        //animator.SetBool("IsRun", true);
                         Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * -1;
                         PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
 
                     }
                     if (LR == false)
                     {
-                        //animator.SetBool("IsRun", true);
                         Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * 1;
                         PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
                     }
@@ -141,18 +139,18 @@ public class FlyingEyeAI : MonoBehaviour
         if (Attack == true)
         {
             Btime += Time.deltaTime;
-            if (Btime >= 0.48f)
+            if (Btime >= 0.4f)
             {
                 if (LR == true)
                 {
-                    Vector3 AttackPrePos = new Vector3(transform.position.x - 1.7f, transform.position.y - 0.3f, transform.position.z);
+                    Vector3 AttackPrePos = new Vector3(transform.position.x - 1.5f, transform.position.y, transform.position.z);
                     Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.3f);
                     Attack = false;
                     Btime = 0.0f;
                 }
                 else if (LR == false)
                 {
-                    Vector3 AttackPrePos = new Vector3(transform.position.x + 1.7f, transform.position.y - 0.3f, transform.position.z);
+                    Vector3 AttackPrePos = new Vector3(transform.position.x + 1.5f, transform.position.y, transform.position.z);
                     Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.3f);
                     Attack = false;
                     Btime = 0.0f;

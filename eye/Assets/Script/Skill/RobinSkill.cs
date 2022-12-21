@@ -12,6 +12,6 @@ public class RobinSkill : MonoBehaviour
     }
     void Update()
     {
-       transform.position = Vector3.MoveTowards(Skill.transform.position, MonsterPos, 0);
+       //transform.position = Vector3.MoveTowards(transform.position, MonsterPos, 0);
     }
 }

@@ -37,7 +37,7 @@ public class RobinMove : MonoBehaviour
     {
         hit = Physics2D.OverlapBox(transform.position, Range, 0, Monster); //몬스터에 닿았는가?
         MonsterPos = hit.transform.position;
-        Instantiate(Skill, ArrowPos.position                                                      , Quaternion.identity);
+        Instantiate(Skill, ArrowPos.position, Quaternion.identity);
         //Skill.transform.position = Vector3.MoveTowards(Skill.transform.position, MonsterPos, 0);
         //Instantiate(SkillPos, hit[i].transform.position, hit[i].transform.rotation);
         //Destroy(Instantiate(Skill, MonsterPos, Quaternion.identity), 0.4f);

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class SkillCoolTimer : MonoBehaviour
 {
     public Image skillFilter;
-    public Text coolTimeCounter;
 
     public float coolTime;
 
@@ -41,7 +40,6 @@ public class SkillCoolTimer : MonoBehaviour
             StartCoroutine("Cooltime");
 
             currentCoolTime = coolTime;
-            coolTimeCounter.text = "" + currentCoolTime;
 
             StartCoroutine("CoolTimeCounter");
 
@@ -71,7 +69,6 @@ public class SkillCoolTimer : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             currentCoolTime -= 1f;
-            coolTimeCounter.text = "" + currentCoolTime;
         }
         yield break;
     }

@@ -1,40 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossController : MonoBehaviour
 {
+    public Image BossHp;
+
     public GameObject[] BossHitBox;
     public GameObject[] BossAttackBox;
     public GameObject BossSkill;
-    public GameObject[] BossSkillspawn;
 
     public Animator anime;
-    int ani = 0;
+    int ran = 0;
+
+    public float coolTime;
+
+    public int HP = 0;
+    private int nowHP = 0;
     // Start is called before the first frame update
 
     void Start()
     {
+        nowHP = HP;
         anime = GetComponent<Animator>();
+        BossHp.fillAmount = 1;
+        InvokeRepeating("UseSkill", 5,7);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        BossHp.fillAmount = nowHP / HP;
+        ran = Random.Range(1, 5);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 8)
         {
-            ani++;
-            Debug.Log(ani);
-            anime.SetInteger("count", ani);
+
         }
-        if (ani >= 5)
-        {
-            ani = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-            anime.SetInteger("count", 3);
-        if (Input.GetKeyDown(KeyCode.N))
-            anime.SetInteger("count", 4);
+    }
+    public void UseSkill()
+    {
+        anime.SetInteger("count", ran);
     }
 
     public void ShowBossHitBox(int hit)
@@ -54,5 +63,9 @@ public class BossController : MonoBehaviour
     public void BossSkillProduce(float y)
     {
         Instantiate(BossSkill, new Vector3(y, 6f, 0), Quaternion.identity);
+    }
+    public void chIdle()
+    {
+        anime.SetInteger("count", 0);
     }
 }

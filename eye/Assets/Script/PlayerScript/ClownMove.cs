@@ -11,6 +11,10 @@ public class ClownMove : MonoBehaviour
     public float cooltime;
     bool temp;
     [SerializeField]
+    GameObject Skill;
+    [SerializeField]
+    Transform SkillPos;
+    [SerializeField]
     Transform ArrowPos;
     [SerializeField]
     GameObject Arrow;

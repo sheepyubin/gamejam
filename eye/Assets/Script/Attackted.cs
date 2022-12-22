@@ -28,15 +28,30 @@ public class Attackted : MonoBehaviour
                 break;
             case "monster2":
                 IsAttackted = true;
-                damage = 4.0f;
+                damage = 2.0f;
                 attackted(damage);
                 break;
             case "monster3":
                 IsAttackted = true;
-                damage = 9.0f;
+                damage = 3.0f;
                 attackted(damage);
                 break;
             case "monster4":
+                IsAttackted = true;
+                damage = 4.0f;
+                attackted(damage);
+                break;
+            case "monster5":
+                IsAttackted = true;
+                damage = 9.0f;
+                attackted(damage);
+                break;
+            case "monster6":
+                IsAttackted = true;
+                damage = 13.0f;
+                attackted(damage);
+                break;
+            case "monster7":
                 IsAttackted = true;
                 damage = 14.0f;
                 attackted(damage);
@@ -45,8 +60,6 @@ public class Attackted : MonoBehaviour
     }
     void Die()
     {
-        rigidbody2D.gravityScale = 12.0f;
-        Physics2D.IgnoreLayerCollision(6, 3, true);
 
     }
     private void Start()

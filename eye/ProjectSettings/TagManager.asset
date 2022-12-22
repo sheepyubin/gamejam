@@ -21,6 +21,9 @@ TagManager:
   - skill2
   - attack7
   - BossStage
+  - skill8
+  - attack9
+  - skill7
   layers:
   - Default
   - TransparentFX

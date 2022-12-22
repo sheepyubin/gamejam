@@ -18,7 +18,7 @@ public class EyesImage : MonoBehaviour
     static public Vector3 PlayerPos;
     private void Start()
     {
-        
+        NowPlayer = GameObject.Find("Yubin");
     }
     public void Update()
     {

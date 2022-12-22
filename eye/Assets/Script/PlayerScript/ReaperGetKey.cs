@@ -28,6 +28,7 @@ public class ReaperGetKey : MonoBehaviour
     }
     void Update()
     {
+        EyesImage.PlayerPos = transform.position; 
         PlayerPos.tra = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //¶¥¿¡ ´ê¾Ò´Â°¡?

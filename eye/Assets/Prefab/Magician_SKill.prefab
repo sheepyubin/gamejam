@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -877801816231332629}
   m_Layer: 13
   m_Name: Magician_SKill
-  m_TagString: Untagged
+  m_TagString: skill8
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

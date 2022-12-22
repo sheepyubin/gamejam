@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1991361816162434048}
   m_Layer: 13
   m_Name: Artemis_Skill
-  m_TagString: Untagged
+  m_TagString: skill7
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

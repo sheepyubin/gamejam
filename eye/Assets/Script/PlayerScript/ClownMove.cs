@@ -80,7 +80,6 @@ public class ClownMove : MonoBehaviour
         if (Input.GetButtonUp("Horizontal")) //속도제한
         {
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
-
         }
 
         if (Mathf.Abs(rigid.velocity.x) < 0.01) //Idle or walk
@@ -114,7 +113,7 @@ public class ClownMove : MonoBehaviour
         Gizmos.DrawWireSphere(pos.position, radius);
     }
     public void IdleAnimation()
-    {
+    {   
         anim.SetBool("isAttack", false);
     }
     public void IdleAnimationSkill()

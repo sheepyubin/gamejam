@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8699359250249464179}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: skillPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,9 +47,9 @@ GameObject:
   - component: {fileID: 8699359250928558940}
   - component: {fileID: 8699359250928558938}
   - component: {fileID: -181893215172552847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Magician
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,7 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8699359251027730991}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8699359251656248450}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MagicPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

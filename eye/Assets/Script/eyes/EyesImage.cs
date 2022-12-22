@@ -14,7 +14,8 @@ public class EyesImage : MonoBehaviour
     public Sprite[] Eyes;
     public Sprite[] SkillIcon;
 
-    Vector3 PlayerPos;
+    static public Vector3 PlayerPos;
+
     public void Update()
     {
         PlayerPos = NowPlayer.transform.position;

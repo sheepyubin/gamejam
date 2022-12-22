@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class SkeletonAI : MonoBehaviour
 {
@@ -142,14 +137,14 @@ public class SkeletonAI : MonoBehaviour
                 if (LR == true)
                 {
                     Vector3 AttackPrePos = new Vector3(transform.position.x - 1.7f, transform.position.y - 0.3f, transform.position.z);
-                    Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.3f);
+                    Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.1f);
                     Attack = false;
                     Btime = 0.0f;
                 }
                 else if (LR == false)
                 {
                     Vector3 AttackPrePos = new Vector3(transform.position.x + 1.7f, transform.position.y - 0.3f, transform.position.z);
-                    Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.3f);
+                    Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.1f);
                     Attack = false;
                     Btime = 0.0f;
                 }

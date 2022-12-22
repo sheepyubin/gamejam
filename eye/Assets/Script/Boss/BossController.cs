@@ -33,6 +33,10 @@ public class BossController : MonoBehaviour
     {
         BossHp.fillAmount = nowHP / HP;
         ran = Random.Range(1, 5);
+        if(nowHP <= 0)
+        {
+            CancelInvoke("UseSkill");
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

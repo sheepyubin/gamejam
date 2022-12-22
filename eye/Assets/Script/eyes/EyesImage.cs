@@ -18,7 +18,7 @@ public class EyesImage : MonoBehaviour
 
     public void Update()
     {
-        PlayerPos = NowPlayer.transform.position;
+
     }
     public void ChangePlayer(int eye)
     {

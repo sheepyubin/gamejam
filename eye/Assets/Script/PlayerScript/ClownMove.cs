@@ -11,7 +11,7 @@ public class ClownMove : MonoBehaviour
     public float cooltime;
     bool temp;
     [SerializeField]
-    GameObject Skill;
+    GameObject SkillRange;
     [SerializeField]
     Transform SkillPos;
     [SerializeField]
@@ -102,6 +102,10 @@ public class ClownMove : MonoBehaviour
     {
         temp = true;
         anim.SetBool("isTime", false);
+    }
+        public void AttackRange()
+    {
+        Instantiate(SkillRange, SkillPos.position, Quaternion.identity);
     }
 
     private void OnDrawGizmos()

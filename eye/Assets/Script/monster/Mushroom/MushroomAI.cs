@@ -1,15 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class GoblinAI : MonoBehaviour
+public class MushroomAI : MonoBehaviour
 {
     [SerializeField] GameObject PosEmpty;
     [SerializeField] GameObject AttackPoint;  //공격 범위 소환을 위한 프리펩 받아오기
-    private Rigidbody2D monsterRigidbody;     //이동을 위한 리지드바디 받아오기
     new SpriteRenderer renderer;              //반짝이기 위해 렌더러 받아오기
     Animator animator;                        //애니메이터 설정
     public float MoveSpeed;                   //이동속도
@@ -24,7 +20,6 @@ public class GoblinAI : MonoBehaviour
     bool Attack;                              //공격소환을 할지 말지
     private void Start()
     {
-        monsterRigidbody = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         MoveSpeed = 1.5f;
@@ -43,7 +38,7 @@ public class GoblinAI : MonoBehaviour
         if (collision.gameObject.layer == 6)
         {
             IsPlayerTrigger = true;
-            animator.SetBool("IsAttack_Goblin", true);
+            animator.SetBool("IsMushroomAttack", true);
             Attack = true;
         }
     }
@@ -54,26 +49,26 @@ public class GoblinAI : MonoBehaviour
             TempTimeA += Time.deltaTime;
             if (TempTimeA >= 0.6f)
             {
-                animator.SetBool("IsAttack_Goblin", true);
+                animator.SetBool("IsMushroomAttack", true);
                 IsPlayerTrigger = true;
                 TempTimeA = 0.0f;
                 Attack = true;
             }
         }
     }
-    public void GoblinIdle()
+    public void IsMushroomIdle()
     {
-        animator.SetBool("IsAttack_Goblin", false);
+        animator.SetBool("IsMushroomAttack", false);
     }
     void Update()
     {
-        transform.rotation = Quaternion.Euler(0,0,0);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
         if (IsPlayerTrigger == true)
         {
 
             if (PlayerPos.tra.x + 1 < transform.position.x)
             {
-                animator.SetBool("IsRun_Goblin", true); 
+                animator.SetBool("IsMushroomRun", true);
                 renderer.flipX = true;
                 Vector3 newVelocity = new Vector3(-MoveSpeed, 0.0f, 0.0f);
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
@@ -81,7 +76,7 @@ public class GoblinAI : MonoBehaviour
             }
             if (PlayerPos.tra.x - 1 > transform.position.x)
             {
-                animator.SetBool("IsRun_Goblin", true);
+                animator.SetBool("IsMushroomRun", true);
                 renderer.flipX = false;
                 Vector3 newVelocity = new Vector3(MoveSpeed, 0.0f, 0.0f);
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
@@ -93,7 +88,7 @@ public class GoblinAI : MonoBehaviour
         {
             if (IsDelay == true)
             {
-                animator.SetBool("IsRun_Goblin", false);
+                animator.SetBool("IsMushroomRun", false);
                 Atime += Time.deltaTime;
                 Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * 0;
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
@@ -120,14 +115,14 @@ public class GoblinAI : MonoBehaviour
                 {
                     if (LR == true)
                     {
-                        animator.SetBool("IsRun_Goblin", true);
+                        animator.SetBool("IsMushroomRun", true);
                         Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * -1;
                         PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
 
                     }
                     if (LR == false)
                     {
-                        animator.SetBool("IsRun_Goblin", true);
+                        animator.SetBool("IsMushroomRun", true);
                         Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * 1;
                         PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
                     }

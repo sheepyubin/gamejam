@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Goblin_Attackted_Monster : MonoBehaviour
+public class Mushroom_Attackted_Monster : MonoBehaviour
 {
     [SerializeField] GameObject DieMark;
     public Image HPBar;
@@ -17,6 +17,10 @@ public class Goblin_Attackted_Monster : MonoBehaviour
     float Btime;
     bool Spawn;
 
+    public void FlyingEye_Idle()
+    {
+        animator.SetBool("IsMushroomTakeHit", false);
+    }
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -32,21 +36,20 @@ public class Goblin_Attackted_Monster : MonoBehaviour
     void MonsterAtteackted(float damage)
     {
         HP -= damage;
-        animator.SetBool("IsTakeHit_Goblin", true);
+        animator.SetBool("IsMushroomTakeHit", true);
         if (HP <= 0)
         {
             IsDie = true;
         }
     }
-    public void TakeHit()
+    public void IsMushroomTakeHit()
     {
-        animator.SetBool("IsTakeHit_Goblin", false);
+        animator.SetBool("IsMushroomTakeHit", false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag.Equals("skill4"))
         {
-
             skill4 = true;
         }
     }
@@ -88,7 +91,7 @@ public class Goblin_Attackted_Monster : MonoBehaviour
     }
     void Update()
     {
-        HPBar.fillAmount = HP/MaxHP;
+        HPBar.fillAmount = HP / MaxHP;
         if (skill4 == true)
         {
             if (IsDie == false)
@@ -111,10 +114,10 @@ public class Goblin_Attackted_Monster : MonoBehaviour
                 }
             }
         }
-        if(IsDie == true)
+        if (IsDie == true)
         {
             HP = 0.0f;
-            animator.SetBool("IsDeath_Goblin", true);
+            animator.SetBool("IsMushroomDeath", true);
             Btime += Time.deltaTime;
             if (Btime >= 1.0f)
             {

@@ -53,6 +53,14 @@ public class FlyingEye_Attacked_Monster : MonoBehaviour
             
             skill4 = true;
         }
+        if (collision.tag.Equals("skill2"))
+        {
+            MonsterAtteackted(Random.Range(30, 38));
+        }
+        if (collision.tag == "attack7")
+        {
+            MonsterAtteackted(7);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -60,9 +68,6 @@ public class FlyingEye_Attacked_Monster : MonoBehaviour
         {
             case "skill1":
                 MonsterAtteackted(Random.Range(9, 12));
-                break;
-            case "skill2":
-                MonsterAtteackted(Random.Range(30, 38));
                 break;
             case "skill3":
                 MonsterAtteackted(Random.Range(9, 13));
@@ -81,9 +86,6 @@ public class FlyingEye_Attacked_Monster : MonoBehaviour
                 break;
             case "attack5":
                 MonsterAtteackted(5);
-                break;
-            case "attack7":
-                MonsterAtteackted(7);
                 break;
             case "attack9":
                 MonsterAtteackted(9);

@@ -54,7 +54,7 @@ public class Troll_Attack_Monster : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "skill1":
-                MonsterAtteackted(Random.Range(9, 12));
+                MonsterAtteackted(Random.Range(9, 13));
                 break;
             case "skill2":
                 MonsterAtteackted(Random.Range(30, 38));
@@ -73,7 +73,7 @@ public class Troll_Attack_Monster : MonoBehaviour
                 MonsterAtteackted(Random.Range(10, 15));
                 break;
             case "skill7":
-                MonsterAtteackted(Random.Range(30, 40));
+                MonsterAtteackted(Random.Range(30, 38));
                 break;
             case "skill8":
                 MonsterAtteackted(Random.Range(10, 15));

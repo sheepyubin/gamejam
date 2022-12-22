@@ -16,7 +16,10 @@ public class EyesImage : MonoBehaviour
     public Sprite[] SkillIcon;
 
     static public Vector3 PlayerPos;
-
+    private void Start()
+    {
+        
+    }
     public void Update()
     {
 

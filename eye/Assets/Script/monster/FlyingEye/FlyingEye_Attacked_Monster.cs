@@ -12,6 +12,7 @@ public class FlyingEye_Attacked_Monster : MonoBehaviour
     bool IsDie;
     public bool skill4;
     public float HP;
+    float MaxHP;
     float Atime;
     float Btime;
     bool Spawn;
@@ -29,6 +30,7 @@ public class FlyingEye_Attacked_Monster : MonoBehaviour
         Atime = 0.0f;
         Btime = 0.0f;
         Spawn = false;
+        MaxHP = HP;
     }
 
     void MonsterAtteackted(float damage)
@@ -90,7 +92,7 @@ public class FlyingEye_Attacked_Monster : MonoBehaviour
     }
     void Update()
     {
-        HPBar.fillAmount = HP / 30;
+        HPBar.fillAmount = HP / MaxHP;
         if (skill4 == true)
         {
             if (IsDie == false)

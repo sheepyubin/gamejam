@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 4199182076101491748}
   m_Layer: 0
   m_Name: Musasi
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,6 +216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44f944222cd5a44bbfe4bfaa8116fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cam1: {fileID: 0}
+  Cam2: {fileID: 0}
+  Cam3: {fileID: 0}
   maxSpeed: 5
   jumpPower: 7
   SkillPos: {fileID: 4199182077028400121}

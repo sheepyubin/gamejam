@@ -43,7 +43,7 @@ public class GoblinAI : MonoBehaviour
         if (collision.gameObject.layer == 6)
         {
             IsPlayerTrigger = true;
-            animator.SetBool("IsAttack", true);
+            animator.SetBool("IsAttack_Goblin", true);
             Attack = true;
         }
     }
@@ -54,16 +54,16 @@ public class GoblinAI : MonoBehaviour
             TempTimeA += Time.deltaTime;
             if (TempTimeA >= 0.6f)
             {
-                animator.SetBool("IsAttack", true);
+                animator.SetBool("IsAttack_Goblin", true);
                 IsPlayerTrigger = true;
                 TempTimeA = 0.0f;
                 Attack = true;
             }
         }
     }
-    public void Idle()
+    public void GoblinIdle()
     {
-        animator.SetBool("IsAttack", false);
+        animator.SetBool("IsAttack_Goblin", false);
     }
     void Update()
     {
@@ -73,7 +73,7 @@ public class GoblinAI : MonoBehaviour
 
             if (PlayerPos.tra.x + 1 < transform.position.x)
             {
-                animator.SetBool("IsRun", true); 
+                animator.SetBool("IsRun_Goblin", true); 
                 renderer.flipX = true;
                 Vector3 newVelocity = new Vector3(-MoveSpeed, 0.0f, 0.0f);
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
@@ -81,7 +81,7 @@ public class GoblinAI : MonoBehaviour
             }
             if (PlayerPos.tra.x - 1 > transform.position.x)
             {
-                animator.SetBool("IsRun", true);
+                animator.SetBool("IsRun_Goblin", true);
                 renderer.flipX = false;
                 Vector3 newVelocity = new Vector3(MoveSpeed, 0.0f, 0.0f);
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
@@ -93,7 +93,7 @@ public class GoblinAI : MonoBehaviour
         {
             if (IsDelay == true)
             {
-                animator.SetBool("IsRun", false);
+                animator.SetBool("IsRun_Goblin", false);
                 Atime += Time.deltaTime;
                 Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * 0;
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
@@ -120,14 +120,14 @@ public class GoblinAI : MonoBehaviour
                 {
                     if (LR == true)
                     {
-                        animator.SetBool("IsRun", true);
+                        animator.SetBool("IsRun_Goblin", true);
                         Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * -1;
                         PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
 
                     }
                     if (LR == false)
                     {
-                        animator.SetBool("IsRun", true);
+                        animator.SetBool("IsRun_Goblin", true);
                         Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * 1;
                         PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
                     }

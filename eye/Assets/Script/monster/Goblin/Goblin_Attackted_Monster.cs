@@ -12,6 +12,7 @@ public class Goblin_Attackted_Monster : MonoBehaviour
     bool IsDie;
     public bool skill4;
     public float HP;
+    float MaxHP;
     float Atime;
     float Btime;
     bool Spawn;
@@ -25,12 +26,13 @@ public class Goblin_Attackted_Monster : MonoBehaviour
         Atime = 0.0f;
         Btime = 0.0f;
         Spawn = false;
+        MaxHP = HP;
     }
 
     void MonsterAtteackted(float damage)
     {
         HP -= damage;
-        animator.SetBool("IsTakeHit", true);
+        animator.SetBool("IsTakeHit_Goblin", true);
         if (HP <= 0)
         {
             IsDie = true;
@@ -38,7 +40,7 @@ public class Goblin_Attackted_Monster : MonoBehaviour
     }
     public void TakeHit()
     {
-        animator.SetBool("IsTakeHit", false);
+        animator.SetBool("IsTakeHit_Goblin", false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -86,7 +88,7 @@ public class Goblin_Attackted_Monster : MonoBehaviour
     }
     void Update()
     {
-        HPBar.fillAmount = HP/30;
+        HPBar.fillAmount = HP/MaxHP;
         if (skill4 == true)
         {
             if (IsDie == false)
@@ -112,7 +114,7 @@ public class Goblin_Attackted_Monster : MonoBehaviour
         if(IsDie == true)
         {
             HP = 0.0f;
-            animator.SetBool("IsDeath", true);
+            animator.SetBool("IsDeath_Goblin", true);
             Btime += Time.deltaTime;
             if (Btime >= 1.0f)
             {

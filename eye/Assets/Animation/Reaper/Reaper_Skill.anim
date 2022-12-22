@@ -27,9 +27,9 @@ AnimationClip:
       value: {fileID: -370398266, guid: fb93bab1661c4ed478c2c3b04776d646, type: 3}
     - time: 0.25
       value: {fileID: -1149016919, guid: fb93bab1661c4ed478c2c3b04776d646, type: 3}
-    - time: 0.33333334
-      value: {fileID: 1307347187, guid: fb93bab1661c4ed478c2c3b04776d646, type: 3}
     - time: 0.41666666
+      value: {fileID: 1307347187, guid: fb93bab1661c4ed478c2c3b04776d646, type: 3}
+    - time: 0.5
       value: {fileID: 435014240, guid: fb93bab1661c4ed478c2c3b04776d646, type: 3}
     attribute: m_Sprite
     path: 
@@ -61,7 +61,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.5833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -81,6 +81,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.16666667
+    functionName: SkillPlay
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.41666666
     functionName: IdleAnimationSkill
     data: 

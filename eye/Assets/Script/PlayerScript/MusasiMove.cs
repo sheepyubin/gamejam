@@ -11,6 +11,10 @@ public class MusasiMove : MonoBehaviour
     public float jumpPower; // มกวม
     bool isground;
     [SerializeField]
+    GameObject Attackrange;
+    [SerializeField]
+    Transform AttackPos;
+    [SerializeField]
     Transform SkillPos;
     [SerializeField]
     GameObject Skill;
@@ -115,6 +119,12 @@ public class MusasiMove : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(pos.position, radius);
     }
+
+    public void AttackRange()
+    {
+        Instantiate(Attackrange, AttackPos.position, Quaternion.identity);
+    }
+
     public void IdleAnimation()
     {
         anim.SetBool("isAttack", false);

@@ -2,22 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClownMove : MonoBehaviour
+public class YubinMove : MonoBehaviour
 {
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
     bool isground;
-    public float time;
-    public float cooltime;
-    bool temp;
-    [SerializeField]
-    GameObject SkillRange;
-    [SerializeField]
-    Transform SkillPos;
-    [SerializeField]
-    Transform ArrowPos;
-    [SerializeField]
-    GameObject Arrow;
     [SerializeField]
     Transform pos;
     [SerializeField]
@@ -27,9 +16,9 @@ public class ClownMove : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
-    Transform trans;
     public int jumpcount;
     int Jumpcnt;
+    public static Vector3 PlayerPos;
 
     void Awake()
     {
@@ -37,12 +26,11 @@ public class ClownMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         Jumpcnt = jumpcount;
-        temp = true;
     }
 
     void Update()
     {
-        EyesImage.PlayerPos = transform.position;
+        PlayerPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //땅에 닿았는가?
 
         if (isground == true && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 1
@@ -67,16 +55,6 @@ public class ClownMove : MonoBehaviour
             anim.SetBool("isAttack", true);
         }
 
-        if (Input.GetKeyDown("x")) //스킬
-        {
-            if (temp)
-            {
-            anim.SetBool("isSkill", true);
-            //Invoke("ItTime", time * 3 / 4);
-            Invoke("TimeEnd", time);                                
-            }
-        }
-
         if (Input.GetButtonUp("Horizontal")) //속도제한
         {
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
@@ -84,35 +62,11 @@ public class ClownMove : MonoBehaviour
         }
 
         if (Mathf.Abs(rigid.velocity.x) < 0.01) //Idle or walk
-        {
             anim.SetBool("isWalk", false);
-        }
         else
             anim.SetBool("isWalk", true);
     }
 
-    void TimeEnd()
-    {
-        anim.SetBool("isTime", true);
-        Invoke("TimeEnd2", cooltime);
-        temp = false;
-    }
-
-    void TimeEnd2()
-    {
-        temp = true;
-        anim.SetBool("isTime", false);
-    }
-        public void AttackRange()
-    {
-        Instantiate(SkillRange, SkillPos.position, Quaternion.identity);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(pos.position, radius);
-    }
     public void IdleAnimation()
     {
         anim.SetBool("isAttack", false);
@@ -121,11 +75,12 @@ public class ClownMove : MonoBehaviour
     {
         anim.SetBool("isSkill", false);
     }
-    public void ShotArrow() //화살 프리팹 복제
-    {
-        Instantiate(Arrow, ArrowPos.position, transform.rotation);
-    }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(pos.position, radius);
+    }
     void FixedUpdate()
     {
         float h = Input.GetAxisRaw("Horizontal");

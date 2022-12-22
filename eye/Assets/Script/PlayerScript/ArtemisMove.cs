@@ -35,6 +35,7 @@ public class ArtemisMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         Jumpcnt = jumpcount;
+        
     }
     public void ArtemisSkill()
     {

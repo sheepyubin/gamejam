@@ -10362,6 +10362,7 @@ GameObject:
   - component: {fileID: 541723401}
   - component: {fileID: 541723400}
   - component: {fileID: 541723399}
+  - component: {fileID: 541723403}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -10452,6 +10453,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &541723403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541723398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 631e0b127e643ec47b30af565cc814c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 541723401}
+  cam:
+  - {fileID: 1064371987}
+  - {fileID: 2097624043}
+  - {fileID: 1919330883}
 --- !u!1 &559395381
 GameObject:
   m_ObjectHideFlags: 0
@@ -10850,7 +10868,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.13999999, y: 0.013333321, z: 0}
   m_MaxChunkCount: 16
@@ -26435,7 +26453,7 @@ MonoBehaviour:
   - {fileID: 1055986181442925110, guid: b5e0812dc31dd9d4a83a394620bb8f4c, type: 3}
   - {fileID: 1055986181442925110, guid: b5e0812dc31dd9d4a83a394620bb8f4c, type: 3}
   - {fileID: 4403626647726044900, guid: 7bf76441a9a76c942823a36afcc500d0, type: 3}
-  - {fileID: 1055986181442925110, guid: b5e0812dc31dd9d4a83a394620bb8f4c, type: 3}
+  - {fileID: 5590810648081377918, guid: d271bf745140b1b4d8732c3325d55cb2, type: 3}
   - {fileID: 1055986181442925110, guid: b5e0812dc31dd9d4a83a394620bb8f4c, type: 3}
   EyeRenderer: {fileID: 1371394555}
   SkillRenderer: {fileID: 43880546}

@@ -5,18 +5,22 @@ using UnityEngine;
 public class TrollAI : MonoBehaviour
 {
     [SerializeField] GameObject PosEmpty;
-    [SerializeField] GameObject AttackPoint;  //공격 범위 소환을 위한 프리펩 받아오기
+    [SerializeField] GameObject AttackPoint1;  //공격 범위 소환을 위한 프리펩 받아오기
+    [SerializeField] GameObject AttackPoint2;
+    [SerializeField] GameObject AttackPoint3;
     new SpriteRenderer renderer;              //반짝이기 위해 렌더러 받아오기
     Animator animator;                        //애니메이터 설정
     public float MoveSpeed;                   //이동속도
     public float delaytime;                   //딜레이 타임
-    public bool IsPlayerTrigger;              //플레이어 닿았나 안닿았나
+    static public bool IsPlayerTrigger;              //플레이어 닿았나 안닿았나
     public bool LR;                           //왼쪽 오른쪽
     float TempTimeA;                          //time 측정 TempA
     float Atime;                              //time 측정 A
     float Btime;                              //time 측정 B
     bool IsDelay;                             //딜레이가 걸리는지
     bool Attack;                              //공격소환을 할지 말지
+    bool Attacking;
+
     private void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
@@ -30,6 +34,7 @@ public class TrollAI : MonoBehaviour
         Btime = 0.0f;
         IsDelay = false;
         Attack = false;
+        Attacking = false;
     }
     private void OnTriggerEnter2D(Collider2D collision) //만났을 때 애니메이션, 트리거 온
     {
@@ -40,6 +45,50 @@ public class TrollAI : MonoBehaviour
             Attack = true;
         }
     }
+    public void Attack1()
+    {
+        if (LR == true)
+        {
+            Vector3 AttackPrePos = new Vector3(transform.position.x - 4.1f, transform.position.y - 0.3f, transform.position.z);
+            Destroy(Instantiate(AttackPoint1, AttackPrePos, Quaternion.identity), 0.3f);
+            Attack = false;
+            Attacking = true;
+            Btime = 0.0f;
+        }
+        else if (LR == false)
+        {
+            Vector3 AttackPrePos = new Vector3(transform.position.x + 4.1f, transform.position.y - 0.3f, transform.position.z);
+            Destroy(Instantiate(AttackPoint1, AttackPrePos, Quaternion.identity), 0.3f);
+            Attack = false;
+            Attacking = true;
+            Btime = 0.0f;
+        }
+    }
+    public void Attack2()
+    {
+        if (LR == true)
+        {
+            Vector3 AttackPrePos = new Vector3(transform.position.x - 3.1f, transform.position.y, transform.position.z);
+            Destroy(Instantiate(AttackPoint2, AttackPrePos, Quaternion.identity), 0.3f);
+            Attack = false;
+            Attacking = false;
+            Btime = 0.0f;
+        }
+        else if (LR == false)
+        {
+            Vector3 AttackPrePos = new Vector3(transform.position.x + 3.1f, transform.position.y, transform.position.z);
+            Destroy(Instantiate(AttackPoint2, AttackPrePos, Quaternion.identity), 0.3f);
+            Attack = false;
+            Attacking = false;
+            Btime = 0.0f;
+        }
+    }
+    public void Attack3()
+    {
+        Vector3 AttackPrePos = new Vector3(transform.position.x, transform.position.y - 0.4f, transform.position.z);
+        Destroy(Instantiate(AttackPoint3, AttackPrePos, Quaternion.identity), 0.3f);
+        Attack = false;
+    }
     private void OnTriggerStay2D(Collider2D collision) //쿨타임 때마다 애니메이션, 공격 및 어택 포인트 생성
     {
         if (collision.gameObject.layer == 6)
@@ -47,16 +96,17 @@ public class TrollAI : MonoBehaviour
             TempTimeA += Time.deltaTime;
             if (TempTimeA >= 2.3f)
             {
-                //animator.SetBool("IsSkeletonAttack", true);
+                animator.SetBool("IsAttack", true);
                 IsPlayerTrigger = true;
                 TempTimeA = 0.0f;
                 Attack = true;
+                Attacking= true;
             }
         }
     }
     public void IsSkeletonIdle()
     {
-        animator.SetBool("IsSkeletonAttack", false);
+        animator.SetBool("IsAttack", false);
     }
     void Update()
     {
@@ -66,7 +116,7 @@ public class TrollAI : MonoBehaviour
 
             if (EyesImage.PlayerPos.x + 1 < transform.position.x)
             {
-                //animator.SetBool("IsSkeletonRun", true);
+                animator.SetBool("IsRun", true);
                 renderer.flipX = true;
                 Vector3 newVelocity = new Vector3(-MoveSpeed, 0.0f, 0.0f);
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
@@ -74,7 +124,7 @@ public class TrollAI : MonoBehaviour
             }
             if (EyesImage.PlayerPos.x - 1 > transform.position.x)
             {
-                //animator.SetBool("IsSkeletonRun", true);
+                animator.SetBool("IsRun", true);
                 renderer.flipX = false;
                 Vector3 newVelocity = new Vector3(MoveSpeed, 0.0f, 0.0f);
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
@@ -86,7 +136,7 @@ public class TrollAI : MonoBehaviour
         {
             if (IsDelay == true)
             {
-                //animator.SetBool("IsSkeletonRun", false);
+                animator.SetBool("IsRun", false);
                 Atime += Time.deltaTime;
                 Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * 0;
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
@@ -113,38 +163,17 @@ public class TrollAI : MonoBehaviour
                 {
                     if (LR == true)
                     {
-                        //animator.SetBool("IsSkeletonRun", true);
+                        animator.SetBool("IsRun", true);
                         Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * -1;
                         PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
 
                     }
                     if (LR == false)
                     {
-                        //animator.SetBool("IsSkeletonRun", true);
+                        animator.SetBool("IsRun", true);
                         Vector3 newVelocity = new Vector3(MoveSpeed, 0, 0) * 1;
                         PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
                     }
-                }
-            }
-        }
-        if (Attack == true)
-        {
-            Btime += Time.deltaTime;
-            if (Btime >= 0.48f)
-            {
-                if (LR == true)
-                {
-                    Vector3 AttackPrePos = new Vector3(transform.position.x - 1.7f, transform.position.y - 0.3f, transform.position.z);
-                    Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.1f);
-                    Attack = false;
-                    Btime = 0.0f;
-                }
-                else if (LR == false)
-                {
-                    Vector3 AttackPrePos = new Vector3(transform.position.x + 1.7f, transform.position.y - 0.3f, transform.position.z);
-                    Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.1f);
-                    Attack = false;
-                    Btime = 0.0f;
                 }
             }
         }

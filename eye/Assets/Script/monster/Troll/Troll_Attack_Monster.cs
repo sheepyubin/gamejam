@@ -19,7 +19,7 @@ public class Troll_Attack_Monster : MonoBehaviour
 
     public void FlyingEye_Idle()
     {
-        //animator.SetBool("IsSkeletonTakeHit", false);
+       animator.SetBool("IsHit", false);
     }
     void Start()
     {
@@ -35,18 +35,21 @@ public class Troll_Attack_Monster : MonoBehaviour
 
     void MonsterAtteackted(float damage)
     {
-        HP -= damage;
-        //animator.SetBool("IsSkeletonTakeHit", true);
-        if (HP <= 0)
+        if (TrollAI.IsPlayerTrigger == true)
         {
-            IsDie = true;
+            HP -= damage;
+            animator.SetBool("IsHit", true);
+            if (HP <= 0)
+            {
+                IsDie = true;
+            }
         }
     }
     public void SkeletonTakeHit()
     {
-        //animator.SetBool("IsSkeletonTakeHit", false);
+        animator.SetBool("IsHit", false);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.gameObject.tag)
         {
@@ -60,7 +63,8 @@ public class Troll_Attack_Monster : MonoBehaviour
                 MonsterAtteackted(Random.Range(9, 13));
                 break;
             case "skill4":
-                skill4 = true;
+                if (TrollAI.IsPlayerTrigger == true)
+                    skill4 = true;
                 break;
             case "skill5":
                 MonsterAtteackted(Random.Range(10, 15));
@@ -85,7 +89,7 @@ public class Troll_Attack_Monster : MonoBehaviour
                 break;
         }
     }
-        private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (collision.gameObject.tag)
         {
@@ -152,7 +156,7 @@ public class Troll_Attack_Monster : MonoBehaviour
         if (IsDie == true)
         {
             HP = 0.0f;
-            //animator.SetBool("IsSkeletonDeath", true);
+            animator.SetBool("IsDeath", true);
             Btime += Time.deltaTime;
             if (Btime >= 1.0f)
             {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8034692145807730926}
   - component: {fileID: 2706983507555481790}
   m_Layer: 0
-  m_Name: TrollAttackPoint
+  m_Name: TrollAttackPoint2
   m_TagString: monster3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7929221275689378941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.04, y: -3.17, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9433962, g: 0.35154858, b: 0.35154858, a: 0.5176471}
+  m_Color: {r: 0.9411765, g: 0.35154858, b: 0.35154858, a: 0.50980395}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

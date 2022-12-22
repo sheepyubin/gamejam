@@ -11,7 +11,6 @@ public class MagiacianMove : MonoBehaviour
     public LayerMask Monster;
     [SerializeField] GameObject Skill;
     Collider2D hit;
-    Vector3 MonsterPos;
     Vector3 temp;
     [SerializeField] Transform pos;
     [SerializeField] float radius;
@@ -24,18 +23,17 @@ public class MagiacianMove : MonoBehaviour
     Animator anim;
     public int jumpcount;
     int Jumpcnt;
+    public static Vector2 MonsterPos;
     public static Vector3 PlayerPos;
 
     public void MagicianSkill()
     {
-        temp = skillPos.position;
         hit = Physics2D.OverlapBox(transform.position, Range, 0, Monster); //몬스터에 닿았는가?
-        if (hit)
+        if (hit != null)
+        {
             MonsterPos = hit.transform.position;
-
-        //Debug.Log("X: " + MonsterPos[i].x + " Y: " + MonsterPos[i].y);
-        //Instantiate(SkillPos, hit[i].transform.position, hit[i].transform.rotation);
-        Instantiate(Skill, temp, Quaternion.identity);
+            Instantiate(Skill, skillPos.position, Quaternion.identity);
+        }
     }
     void Awake()
     {

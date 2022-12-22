@@ -1361,6 +1361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robin
       objectReference: {fileID: 0}
+    - target: {fileID: 1126723850441409197, guid: b73fbfe1895497a4ba2668e69aa9b3eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1731
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b73fbfe1895497a4ba2668e69aa9b3eb, type: 3}
 --- !u!1001 &1981200668472997250
@@ -1427,13 +1431,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4199182075879395685, guid: da8f13b7b0d9a874ca9dd68d1937e8f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.056
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199182075879395685, guid: da8f13b7b0d9a874ca9dd68d1937e8f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.098
+      objectReference: {fileID: 0}
     - target: {fileID: 4199182076101491746, guid: da8f13b7b0d9a874ca9dd68d1937e8f8, type: 3}
       propertyPath: m_Size.x
       value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 4199182076101491746, guid: da8f13b7b0d9a874ca9dd68d1937e8f8, type: 3}
       propertyPath: m_Offset.x
-      value: -0.1
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199182076101491746, guid: da8f13b7b0d9a874ca9dd68d1937e8f8, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4199182076101491748, guid: da8f13b7b0d9a874ca9dd68d1937e8f8, type: 3}
       propertyPath: AttackPos

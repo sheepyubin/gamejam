@@ -2,28 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RobinMove : MonoBehaviour
+public class MagiacianMove : MonoBehaviour
 {
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
     bool isground;
-    public Vector2 Range;
-    public LayerMask Monster;
-    [SerializeField] GameObject Skill;
-    [SerializeField]Transform ArrowPos;
-    [SerializeField]GameObject Arrow;
-    [SerializeField]Transform pos;
-    [SerializeField]float radius;
-    [SerializeField]LayerMask layer;
+    [SerializeField] Transform pos;
+    [SerializeField] float radius;
+    [SerializeField] LayerMask layer;
+    [SerializeField] GameObject Magic;
+    [SerializeField] Transform MagicPos;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
-    Transform trans;
     public int jumpcount;
     int Jumpcnt;
-    int i = 0;
-    Collider2D hit;
-    Vector3 MonsterPos;
+    public static Vector3 PlayerPos;
 
     void Awake()
     {
@@ -33,25 +27,27 @@ public class RobinMove : MonoBehaviour
         Jumpcnt = jumpcount;
     }
 
-    public void RobinSkill()
-    {
-        hit = Physics2D.OverlapBox(transform.position, Range, 0, Monster); //몬스터에 닿았는가?
-        MonsterPos = hit.transform.position;
-        Instantiate(Skill, ArrowPos.position, Quaternion.identity);
-        //Skill.transform.position = Vector3.MoveTowards(Skill.transform.position, MonsterPos, 0);
-        //Instantiate(SkillPos, hit[i].transform.position, hit[i].transform.rotation);
-        //Destroy(Instantiate(Skill, MonsterPos, Quaternion.identity), 0.4f);
-    }
     void Update()
     {
+        PlayerPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //땅에 닿았는가?
 
         if (isground == true && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 1
         {
-            Jumpcnt--; //n단
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
-
+        if (isground == false && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 2
+        {
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        }
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            Jumpcnt--; //n단
+        }
+        if (isground)
+        {
+            Jumpcnt = jumpcount; //0이하로 내려가면 점프 불가
+        }
 
         if (Input.GetKeyDown("z"))//공격모션
         {
@@ -75,11 +71,9 @@ public class RobinMove : MonoBehaviour
             anim.SetBool("isWalk", true);
     }
 
-    void OnDrawGizmos()
+    public void ShotMagic() //화살 프리팹 복제
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, Range);
-        Gizmos.DrawWireSphere(pos.position, radius);
+        Instantiate(Magic, MagicPos.position, transform.rotation);
     }
     public void IdleAnimation()
     {
@@ -89,11 +83,12 @@ public class RobinMove : MonoBehaviour
     {
         anim.SetBool("isSkill", false);
     }
-    public void ShotArrow() //화살 프리팹 복제
-    {
-        Instantiate(Arrow, ArrowPos.position, transform.rotation);
-    }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(pos.position, radius);
+    }
     void FixedUpdate()
     {
         float h = Input.GetAxisRaw("Horizontal");

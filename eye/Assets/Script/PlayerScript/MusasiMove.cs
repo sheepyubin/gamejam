@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MusasiMove : MonoBehaviour
 {
+    public Camera Cam1;
+    public Camera Cam2;
+    public Camera Cam3;
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
     bool isground;
@@ -77,6 +80,36 @@ public class MusasiMove : MonoBehaviour
             anim.SetBool("isWalk", true);
     }
 
+    void OnTriggerEnter2D(Collider2D collision) //카메라 전환 (스테이지 넘어 갈 때)
+    {
+        if (collision.gameObject.tag == "Stage1")
+        {
+            ShowCam1View();
+        }
+        if (collision.gameObject.tag == "Stage2")
+        {
+            ShowCam2View();
+        }
+        if (collision.gameObject.tag == "Stage3")
+        {
+            ShowCam3View();
+        }
+    }
+    public void ShowCam1View()
+    {
+        Cam1.enabled = true;
+        Cam2.enabled = false;
+    }
+    public void ShowCam2View()
+    {
+        Cam1.enabled = false;
+        Cam2.enabled = true;
+    }
+    public void ShowCam3View()
+    {
+        Cam2.enabled = false;
+        Cam3.enabled = true;
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

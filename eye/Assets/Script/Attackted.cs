@@ -8,7 +8,7 @@ public class Attackted : MonoBehaviour
 {
     new SpriteRenderer renderer;
     new Rigidbody2D rigidbody2D;
-    public float HP = 100.0f;
+    public float HP = 40f;
     public float damage = 0.0f;
     public float delay = 0.3f;
     const short temp = 4;

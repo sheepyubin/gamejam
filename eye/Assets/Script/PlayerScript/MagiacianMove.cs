@@ -7,10 +7,17 @@ public class MagiacianMove : MonoBehaviour
     public float maxSpeed;// 속도
     public float jumpPower; // 점프
     bool isground;
+    public Vector2 Range;
+    public LayerMask Monster;
+    [SerializeField] GameObject Skill;
+    Collider2D hit;
+    Vector3 MonsterPos;
+    Vector3 temp;
     [SerializeField] Transform pos;
     [SerializeField] float radius;
     [SerializeField] LayerMask layer;
     [SerializeField] GameObject Magic;
+    [SerializeField] Transform skillPos;
     [SerializeField] Transform MagicPos;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
@@ -19,6 +26,17 @@ public class MagiacianMove : MonoBehaviour
     int Jumpcnt;
     public static Vector3 PlayerPos;
 
+    public void MagicianSkill()
+    {
+        temp = skillPos.position;
+        hit = Physics2D.OverlapBox(transform.position, Range, 0, Monster); //몬스터에 닿았는가?
+        if (hit)
+            MonsterPos = hit.transform.position;
+
+        //Debug.Log("X: " + MonsterPos[i].x + " Y: " + MonsterPos[i].y);
+        //Instantiate(SkillPos, hit[i].transform.position, hit[i].transform.rotation);
+        Instantiate(Skill, temp, Quaternion.identity);
+    }
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -87,6 +105,7 @@ public class MagiacianMove : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, Range);
         Gizmos.DrawWireSphere(pos.position, radius);
     }
     void FixedUpdate()

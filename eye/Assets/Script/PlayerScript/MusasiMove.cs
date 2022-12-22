@@ -36,7 +36,6 @@ public class MusasiMove : MonoBehaviour
         anim = GetComponent<Animator>();
         Jumpcnt = jumpcount;
     }
-
     void Update()
     {
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //땅에 닿았는가?
@@ -79,6 +78,7 @@ public class MusasiMove : MonoBehaviour
         else
             anim.SetBool("isWalk", true);
     }
+
 
     void OnTriggerEnter2D(Collider2D collision) //카메라 전환 (스테이지 넘어 갈 때)
     {

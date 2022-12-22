@@ -57,7 +57,6 @@ public class ReaperGetKey : MonoBehaviour
         if (Input.GetKeyDown("x")) //스킬
         {
             anim.SetBool("isSkill", true);
-            Instantiate(nat,trans.transform);
         }
 
         if (Input.GetButtonUp("Horizontal")) //속도제한
@@ -72,6 +71,10 @@ public class ReaperGetKey : MonoBehaviour
             anim.SetBool("isWalk", true);
     }
 
+    public void SkillPlay()
+    {
+            Instantiate(nat,trans.transform);
+    }
     public void IdleAnimation()
     {
         anim.SetBool("isAttack", false);
@@ -80,7 +83,11 @@ public class ReaperGetKey : MonoBehaviour
     {
         anim.SetBool("isSkill", false);
     }
-
+        private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(pos.position, radius);
+    }
     void FixedUpdate()
     {
         float h = Input.GetAxisRaw("Horizontal");

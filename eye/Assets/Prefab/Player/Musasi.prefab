@@ -217,11 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44f944222cd5a44bbfe4bfaa8116fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cam1: {fileID: 0}
-  Cam2: {fileID: 0}
-  Cam3: {fileID: 0}
   maxSpeed: 5
   jumpPower: 7
+  Attackrange: {fileID: 5884369751241811140, guid: 6bfce8f9a55890143807609268336b0e, type: 3}
+  AttackPos: {fileID: 4199182075879395685}
   SkillPos: {fileID: 4199182077028400121}
   Skill: {fileID: 8915226115612093415, guid: ec5f1a2bb1031594b8c3e09ac8d8ff65, type: 3}
   Skill2: {fileID: 2218148076551531621, guid: 7f9bb716a6506d74280743f6c6d65bd4, type: 3}

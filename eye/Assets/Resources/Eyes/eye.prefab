@@ -287,14 +287,14 @@ MonoBehaviour:
   ItemImage: {fileID: 7995963192281256336}
   EyesRenderer: {fileID: 7995963192087806817}
   Eyes:
-  - {fileID: 800499618, guid: c39a150468aac0145a1511cb21392c87, type: 3}
-  - {fileID: 142344578, guid: 2df9e29e3e5d0004eaa743c9b6004ef6, type: 3}
-  - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
-  - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
-  - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
-  - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
-  - {fileID: -38806279, guid: 46d1f24f82296a541bc56c3b09e4e7fd, type: 3}
-  - {fileID: 286427585, guid: fb93bab1661c4ed478c2c3b04776d646, type: 3}
+  - {fileID: 1187883285, guid: 04beb9eb41b5d734dbf2af3791bcc664, type: 3}
+  - {fileID: -1729476033, guid: 04beb9eb41b5d734dbf2af3791bcc664, type: 3}
+  - {fileID: -461976107, guid: 04beb9eb41b5d734dbf2af3791bcc664, type: 3}
+  - {fileID: -1344836534, guid: 04beb9eb41b5d734dbf2af3791bcc664, type: 3}
+  - {fileID: -1750065976, guid: 04beb9eb41b5d734dbf2af3791bcc664, type: 3}
+  - {fileID: 384336, guid: 04beb9eb41b5d734dbf2af3791bcc664, type: 3}
+  - {fileID: -617842216, guid: 04beb9eb41b5d734dbf2af3791bcc664, type: 3}
+  - {fileID: -599438702, guid: 04beb9eb41b5d734dbf2af3791bcc664, type: 3}
 --- !u!1 &7995963192281256337
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +670,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7995963193287545205
 MonoBehaviour:

@@ -51,19 +51,7 @@ public class RobinMove : MonoBehaviour
             Jumpcnt--; //n단
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
-        if (isground == false && Input.GetKeyDown("c") && Jumpcnt > 0) //점프 2
-        {
-            Jumpcnt--; //n단
-            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-           Jumpcnt--; //n단
-        }
-        if (isground)
-        {
-            Jumpcnt = jumpcount; //0이하로 내려가면 점프 불가
-        }
+
 
         if (Input.GetKeyDown("z"))//공격모션
         {

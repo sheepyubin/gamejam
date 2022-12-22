@@ -28,11 +28,11 @@ public class EyesController : MonoBehaviour
         EyeInfo = new EyesDB.EyesRow();
         eyesImage = FindObjectOfType<EyesImage>();
     }
-    private void Update()
+    private void Update() //ddd
     {
         if (Input.GetKeyDown(KeyCode.F) && isEyes == true)
         {
-            eyesImage.changeImage(playerIndex);
+            eyesImage.ChangePlayer(playerIndex);
             Destroy(gameObject);
         }
         else if (Input.GetKeyDown(KeyCode.F) && isEyes == true)

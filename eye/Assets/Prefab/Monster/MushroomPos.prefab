@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 8355269024236653243}
   m_Layer: 12
   m_Name: MushroomPos
-  m_TagString: Untagged
+  m_TagString: monster4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

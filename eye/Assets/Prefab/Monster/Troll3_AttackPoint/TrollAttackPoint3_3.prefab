@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1612167502672960265}
   - component: {fileID: 2147829399128800997}
-  m_Layer: 0
-  m_Name: TrollAttackPoint3
-  m_TagString: Untagged
+  m_Layer: 13
+  m_Name: TrollAttackPoint3_3
+  m_TagString: monster7
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

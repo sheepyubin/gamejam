@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 753153246446100291}
   m_Layer: 12
   m_Name: GoblinPos
-  m_TagString: Untagged
+  m_TagString: monster1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -66,7 +66,7 @@ public class FlyingEyeAI : MonoBehaviour
     {
         if (IsPlayerTrigger == true)
         {
-            Vector2 rot = new Vector2(transform.position.x - PlayerMove.PlayerPos.x, transform.position.y - PlayerMove.PlayerPos.y);
+            Vector2 rot = new Vector2(transform.position.x - PlayerPos.tra.x, transform.position.y - PlayerPos.tra.y);
             float Angle = Mathf.Atan2(rot.x, rot.y) * Mathf.Rad2Deg * -1;
             if (LR == false)
                 Angle += -90;
@@ -118,6 +118,7 @@ public class FlyingEyeAI : MonoBehaviour
                 {
                     IsDelay = true;
                     Btime = 0.0f;
+                    LR = LR = LR ? false : true;
                 }
                 else
                 {
@@ -143,14 +144,14 @@ public class FlyingEyeAI : MonoBehaviour
                 if (LR == true)
                 {
                     Vector3 AttackPrePos = new Vector3(transform.position.x - 1.5f, transform.position.y, transform.position.z);
-                    Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.3f);
+                    Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.1f);
                     Attack = false;
                     Btime = 0.0f;
                 }
                 else if (LR == false)
                 {
                     Vector3 AttackPrePos = new Vector3(transform.position.x + 1.5f, transform.position.y, transform.position.z);
-                    Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.3f);
+                    Destroy(Instantiate(AttackPoint, AttackPrePos, Quaternion.identity), 0.1f);
                     Attack = false;
                     Btime = 0.0f;
                 }

@@ -18,6 +18,8 @@ public class CamCanvas : MonoBehaviour
             CamChange(1);
         if (cam[2].enabled == true)
             CamChange(2);
+        if (cam[3].enabled == true)
+            CamChange(3);
     }
     public void CamChange(int camnum)
     {

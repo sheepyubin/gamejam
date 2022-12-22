@@ -24,6 +24,10 @@ public class BossSkill : MonoBehaviour
         {
 
         }
+        if(collision.gameObject.layer == 3)
+        {
+            BossSkillAnime.SetBool("isBoom", true);
+        }
     }
     public void SkillStop()
     {

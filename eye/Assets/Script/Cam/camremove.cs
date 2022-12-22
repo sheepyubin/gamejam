@@ -7,6 +7,7 @@ public class camremove : MonoBehaviour
     public Camera Cam1;
     public Camera Cam2;
     public Camera Cam3;
+    public Camera Cam4;
     private void Update()
     {
         transform.position = EyesImage.PlayerPos;
@@ -25,12 +26,17 @@ public class camremove : MonoBehaviour
         {
             ShowCam3View();
         }
+        if (collision.gameObject.tag == "BossStage")
+        {
+            ShowCamBossView();
+        }
     }
     public void ShowCam1View()
     {
         Cam1.enabled = true;
         Cam2.enabled = false;
         Cam3.enabled= false;
+        Cam4.enabled= false;
         Debug.Log("1");
     }
     public void ShowCam2View()
@@ -38,13 +44,23 @@ public class camremove : MonoBehaviour
         Cam1.enabled = false;
         Cam2.enabled = true;
         Cam3.enabled = false;
-        Debug.Log("3");
+        Cam4.enabled = false;
+        Debug.Log("2");
     }
     public void ShowCam3View()
     {
         Cam1.enabled = false;
         Cam2.enabled = false;
         Cam3.enabled = true;
+        Cam4.enabled = false;
+        Debug.Log("3");
+    }
+    public void ShowCamBossView()
+    {
+        Cam1.enabled = false;
+        Cam2.enabled = false;
+        Cam3.enabled = false;
+        Cam4.enabled = true;
         Debug.Log("4");
     }
 }

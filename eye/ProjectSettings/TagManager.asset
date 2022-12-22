@@ -19,6 +19,8 @@ TagManager:
   - skill4
   - Stage3
   - skill2
+  - attack7
+  - BossStage
   layers:
   - Default
   - TransparentFX

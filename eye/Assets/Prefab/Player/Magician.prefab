@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 8699359250928558941}
   - component: {fileID: 8699359250928558940}
   - component: {fileID: 8699359250928558938}
+  - component: {fileID: -181893215172552847}
   m_Layer: 0
   m_Name: Magician
   m_TagString: Untagged
@@ -233,6 +234,21 @@ MonoBehaviour:
   skillPos: {fileID: 8699359250249464179}
   MagicPos: {fileID: 8699359251656248450}
   jumpcount: 2
+--- !u!114 &-181893215172552847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8699359250928558915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428e5c7aadceef0409614b9dd599a945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 40
+  damage: 0
+  delay: 0.3
 --- !u!1 &8699359251027730990
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,6 +38,7 @@ public class ClownMove : MonoBehaviour
 
     void Update()
     {
+        EyesImage.PlayerPos = transform.position;
         isground = Physics2D.OverlapCircle(pos.position, radius, layer); //¶¥¿¡ ´ê¾Ò´Â°¡?
 
         if (isground == true && Input.GetKeyDown("c") && Jumpcnt > 0) //Á¡ÇÁ 1

@@ -66,7 +66,7 @@ public class SkeletonAI : MonoBehaviour
         if (IsPlayerTrigger == true)
         {
 
-            if (PlayerPos.tra.x + 1 < transform.position.x)
+            if (EyesImage.PlayerPos.x + 1 < transform.position.x)
             {
                 animator.SetBool("IsSkeletonRun", true);
                 renderer.flipX = true;
@@ -74,7 +74,7 @@ public class SkeletonAI : MonoBehaviour
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
                 LR = true;
             }
-            if (PlayerPos.tra.x - 1 > transform.position.x)
+            if (EyesImage.PlayerPos.x - 1 > transform.position.x)
             {
                 animator.SetBool("IsSkeletonRun", true);
                 renderer.flipX = false;

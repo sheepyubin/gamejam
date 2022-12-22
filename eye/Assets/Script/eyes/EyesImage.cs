@@ -8,6 +8,7 @@ public class EyesImage : MonoBehaviour
     [Header("Player")]
     public GameObject NowPlayer;
     public GameObject[] Players;
+    public GameObject Effect;
     [Header("UI")]
     public Image EyeRenderer;
     public Image SkillRenderer;
@@ -18,13 +19,14 @@ public class EyesImage : MonoBehaviour
 
     public void Update()
     {
-        PlayerPos = NowPlayer.transform.position;
+
     }
     public void ChangePlayer(int eye)
     {
         EyeRenderer.sprite = Eyes[eye];
         //SkillRenderer.sprite = SkillIcon[eye];
         Instantiate(Players[eye], PlayerPos, Quaternion.identity);
+        Instantiate(Effect, PlayerPos, Quaternion.identity);
         Destroy(NowPlayer);
         NowPlayer = Players[eye];
     }

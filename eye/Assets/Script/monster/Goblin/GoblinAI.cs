@@ -71,7 +71,7 @@ public class GoblinAI : MonoBehaviour
         if (IsPlayerTrigger == true)
         {
 
-            if (PlayerPos.tra.x + 1 < transform.position.x)
+            if (EyesImage.PlayerPos.x + 1 < transform.position.x)
             {
                 animator.SetBool("IsRun_Goblin", true); 
                 renderer.flipX = true;
@@ -79,7 +79,7 @@ public class GoblinAI : MonoBehaviour
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
                 LR = true;
             }
-            if (PlayerPos.tra.x - 1 > transform.position.x)
+            if (EyesImage.PlayerPos.x - 1 > transform.position.x)
             {
                 animator.SetBool("IsRun_Goblin", true);
                 renderer.flipX = false;

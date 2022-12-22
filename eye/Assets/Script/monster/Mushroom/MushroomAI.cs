@@ -66,7 +66,7 @@ public class MushroomAI : MonoBehaviour
         if (IsPlayerTrigger == true)
         {
 
-            if (PlayerPos.tra.x + 1 < transform.position.x)
+            if (EyesImage.PlayerPos.x + 1 < transform.position.x)
             {
                 animator.SetBool("IsMushroomRun", true);
                 renderer.flipX = true;
@@ -74,7 +74,7 @@ public class MushroomAI : MonoBehaviour
                 PosEmpty.GetComponent<Rigidbody2D>().velocity = newVelocity;
                 LR = true;
             }
-            if (PlayerPos.tra.x - 1 > transform.position.x)
+            if (EyesImage.PlayerPos.x - 1 > transform.position.x)
             {
                 animator.SetBool("IsMushroomRun", true);
                 renderer.flipX = false;

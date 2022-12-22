@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Clown_S_Attack
+  m_Name: Yubin_Attack
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1706796650, guid: 214913f06afa7dc4e9c6a35aea5e13de, type: 3}
+      value: {fileID: -874272782, guid: 855d018bc5fc0c340a321e08179c0a5f, type: 3}
     - time: 0.083333336
-      value: {fileID: -67094477, guid: 214913f06afa7dc4e9c6a35aea5e13de, type: 3}
+      value: {fileID: -1730042873, guid: 855d018bc5fc0c340a321e08179c0a5f, type: 3}
     - time: 0.16666667
-      value: {fileID: -835098702, guid: 214913f06afa7dc4e9c6a35aea5e13de, type: 3}
+      value: {fileID: -1080303067, guid: 855d018bc5fc0c340a321e08179c0a5f, type: 3}
     - time: 0.25
-      value: {fileID: -169932084, guid: 214913f06afa7dc4e9c6a35aea5e13de, type: 3}
+      value: {fileID: -1654308609, guid: 855d018bc5fc0c340a321e08179c0a5f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,10 +46,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1706796650, guid: 214913f06afa7dc4e9c6a35aea5e13de, type: 3}
-    - {fileID: -67094477, guid: 214913f06afa7dc4e9c6a35aea5e13de, type: 3}
-    - {fileID: -835098702, guid: 214913f06afa7dc4e9c6a35aea5e13de, type: 3}
-    - {fileID: -169932084, guid: 214913f06afa7dc4e9c6a35aea5e13de, type: 3}
+    - {fileID: -874272782, guid: 855d018bc5fc0c340a321e08179c0a5f, type: 3}
+    - {fileID: -1730042873, guid: 855d018bc5fc0c340a321e08179c0a5f, type: 3}
+    - {fileID: -1080303067, guid: 855d018bc5fc0c340a321e08179c0a5f, type: 3}
+    - {fileID: -1654308609, guid: 855d018bc5fc0c340a321e08179c0a5f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -75,13 +75,6 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.25
-    functionName: AttackRange
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 0.33333334
     functionName: IdleAnimation
     data: 

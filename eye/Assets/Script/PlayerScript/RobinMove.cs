@@ -10,6 +10,7 @@ public class RobinMove : MonoBehaviour
     public Vector2 Range;
     public LayerMask Monster;
     [SerializeField] GameObject Skill;
+    [SerializeField] Transform Skillpos;
     [SerializeField]Transform ArrowPos;
     [SerializeField]GameObject Arrow;
     [SerializeField]Transform pos;
@@ -23,7 +24,7 @@ public class RobinMove : MonoBehaviour
     int Jumpcnt;
     int i = 0;
     Collider2D hit;
-    Vector3 MonsterPos;
+    public static Vector2 MonsterPos;
 
     void Awake()
     {
@@ -36,8 +37,11 @@ public class RobinMove : MonoBehaviour
     public void RobinSkill()
     {
         hit = Physics2D.OverlapBox(transform.position, Range, 0, Monster); //몬스터에 닿았는가?
-        MonsterPos = hit.transform.position;
-        Instantiate(Skill, ArrowPos.position, Quaternion.identity);
+        if(hit!=null) 
+        { 
+            MonsterPos = hit.transform.position;
+            Instantiate(Skill, Skillpos.position, Quaternion.identity);
+        }
         //Skill.transform.position = Vector3.MoveTowards(Skill.transform.position, MonsterPos, 0);
         //Instantiate(SkillPos, hit[i].transform.position, hit[i].transform.rotation);
         //Destroy(Instantiate(Skill, MonsterPos, Quaternion.identity), 0.4f);

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4593871718688729610}
   - component: {fileID: -6068248196070822817}
   - component: {fileID: 1480951484798832966}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ClownArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

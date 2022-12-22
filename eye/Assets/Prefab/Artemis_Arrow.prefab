@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2006719433573057177}
   - component: {fileID: 2006719433573057176}
   - component: {fileID: 2606082286343326715}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Artemis_Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

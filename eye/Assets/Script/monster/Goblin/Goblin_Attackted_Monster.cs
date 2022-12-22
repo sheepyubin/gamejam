@@ -44,17 +44,42 @@ public class Goblin_Attackted_Monster : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("skill4"))
+        switch (collision.gameObject.tag)
         {
-            skill4 = true;
-        }
-        if(collision.tag == "skill2")
-        {
-            MonsterAtteackted(Random.Range(30, 38));
-        }
-        if (collision.tag == "attack7")
-        {
-            MonsterAtteackted(7);
+            case "skill1":
+                MonsterAtteackted(Random.Range(9, 13));
+                break;
+            case "skill2":
+                MonsterAtteackted(Random.Range(30, 38));
+                break;
+            case "skill3":
+                MonsterAtteackted(Random.Range(9, 13));
+                break;
+            case "skill4":
+                if (TrollAI.IsPlayerTrigger == true)
+                    skill4 = true;
+                break;
+            case "skill5":
+                MonsterAtteackted(Random.Range(10, 15));
+                break;
+            case "skill6":
+                MonsterAtteackted(Random.Range(10, 15));
+                break;
+            case "skill7":
+                MonsterAtteackted(Random.Range(30, 38));
+                break;
+            case "skill8":
+                MonsterAtteackted(Random.Range(10, 15));
+                break;
+            case "attack5":
+                MonsterAtteackted(5);
+                break;
+            case "attack7":
+                MonsterAtteackted(7);
+                break;
+            case "attack9":
+                MonsterAtteackted(9);
+                break;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -64,8 +89,14 @@ public class Goblin_Attackted_Monster : MonoBehaviour
             case "skill1":
                 MonsterAtteackted(Random.Range(9, 12));
                 break;
+            case "skill2":
+                MonsterAtteackted(Random.Range(30, 38));
+                break;
             case "skill3":
                 MonsterAtteackted(Random.Range(9, 13));
+                break;
+            case "skill4":
+                skill4 = true;
                 break;
             case "skill5":
                 MonsterAtteackted(Random.Range(10, 15));
@@ -81,6 +112,9 @@ public class Goblin_Attackted_Monster : MonoBehaviour
                 break;
             case "attack5":
                 MonsterAtteackted(5);
+                break;
+            case "attack7":
+                MonsterAtteackted(7);
                 break;
             case "attack9":
                 MonsterAtteackted(9);
@@ -119,6 +153,7 @@ public class Goblin_Attackted_Monster : MonoBehaviour
             Btime += Time.deltaTime;
             if (Btime >= 1.0f)
             {
+                MonsterSpawn.SpawnCount--;
                 Destroy(transform.parent.gameObject);
                 Destroy(gameObject);
             }

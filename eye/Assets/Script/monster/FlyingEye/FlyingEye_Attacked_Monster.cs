@@ -157,6 +157,7 @@ public class FlyingEye_Attacked_Monster : MonoBehaviour
             Btime += Time.deltaTime;
             if (Btime >= 1.0f)
             {
+                MonsterSpawn.SpawnCount--;
                 Destroy(transform.parent.gameObject);
                 Destroy(gameObject);
             }

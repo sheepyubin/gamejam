@@ -8,6 +8,8 @@ public class ThorMove : MonoBehaviour
     public float jumpPower; // 점프
     public Vector2 Range;
     public LayerMask Monster;
+    [SerializeField] GameObject AttackPointPos;
+    [SerializeField] GameObject AttackPoint;
     [SerializeField] GameObject Skill;
     Collider2D[] hit;
     Vector3[] MonsterPos = new Vector3[20];
@@ -65,6 +67,7 @@ public class ThorMove : MonoBehaviour
         if (Input.GetKeyDown("z"))//공격모션
         {
             anim.SetBool("isAttack", true);
+            Destroy(Instantiate(AttackPoint,AttackPointPos.transform),0.1f);
         }
 
         if (Input.GetKeyDown("x")) //스킬

@@ -18,6 +18,7 @@ TagManager:
   - skill1
   - skill4
   - Stage3
+  - skill2
   layers:
   - Default
   - TransparentFX

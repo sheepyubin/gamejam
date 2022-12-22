@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4199182075879395685}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,8 @@ GameObject:
   - component: {fileID: 4199182076101491747}
   - component: {fileID: 4199182076101491746}
   - component: {fileID: 4199182076101491748}
-  m_Layer: 0
+  - component: {fileID: -8108533767486732242}
+  m_Layer: 6
   m_Name: Musasi
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -230,6 +231,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   jumpcount: 2
+--- !u!114 &-8108533767486732242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4199182076101491773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428e5c7aadceef0409614b9dd599a945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 100
+  damage: 0
+  delay: 0.3
 --- !u!1 &4199182077028400120
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4199182077028400121}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SkillPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

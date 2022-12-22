@@ -14,9 +14,7 @@ public class BossController : MonoBehaviour
     public Animator anime;
     int ran = 0;
 
-    public float coolTime;
-
-    public static int HP = 0;
+    public int HP = 0;
     private int nowHP = 0;
     // Start is called before the first frame update
 

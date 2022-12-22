@@ -16,7 +16,7 @@ public class BossController : MonoBehaviour
 
     public float coolTime;
 
-    public int HP = 0;
+    public static int HP = 0;
     private int nowHP = 0;
     // Start is called before the first frame update
 
@@ -62,7 +62,7 @@ public class BossController : MonoBehaviour
 
     public void BossSkillProduce(float y)
     {
-        Instantiate(BossSkill, new Vector3(y, 6f, 0), Quaternion.identity);
+        Instantiate(BossSkill, new Vector3(gameObject.transform.position.x + y, 6f, 0), Quaternion.identity);
     }
     public void chIdle()
     {

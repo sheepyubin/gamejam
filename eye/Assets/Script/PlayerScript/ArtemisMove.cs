@@ -131,14 +131,17 @@ public class ArtemisMove : MonoBehaviour
     {
         Cam1.enabled = true;
         Cam2.enabled = false;
+        Cam3.enabled = false;
     }
     public void ShowCam2View()
     {
         Cam1.enabled = false;
         Cam2.enabled = true;
+        Cam3.enabled = false;
     }
     public void ShowCam3View()
     {
+        Cam1.enabled = false;
         Cam2.enabled = false;
         Cam3.enabled = true;
     }

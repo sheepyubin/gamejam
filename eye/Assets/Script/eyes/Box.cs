@@ -37,7 +37,7 @@ public class Box : MonoBehaviour
             isboxing = true;
             ran = Random.Range(1, 8);
             boximage.sprite = boxopen;
-            Eyes = EyesController.Create(4);
+            Eyes = EyesController.Create(ran);
             GameEyes = GameObject.FindGameObjectWithTag("eyes");
             GameEyes.transform.position = transform.position;
 

@@ -24,7 +24,7 @@ public class EyesImage : MonoBehaviour
     public void ChangePlayer(int eye)
     {
         EyeRenderer.sprite = Eyes[eye];
-        //SkillRenderer.sprite = SkillIcon[eye];
+        SkillRenderer.sprite = SkillIcon[eye];
         Instantiate(Players[eye], PlayerPos, Quaternion.identity);
         Instantiate(Effect, PlayerPos, Quaternion.identity);
         Destroy(NowPlayer);

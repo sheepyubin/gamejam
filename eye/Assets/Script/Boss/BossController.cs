@@ -16,7 +16,7 @@ public class BossController : MonoBehaviour
 
     public float coolTime;
 
-    public static int HP = 0;
+    public int HP = 0;
     private int nowHP = 0;
     // Start is called before the first frame update
 
@@ -33,7 +33,7 @@ public class BossController : MonoBehaviour
     {
         BossHp.fillAmount = nowHP / HP;
         ran = Random.Range(1, 5);
-        if(nowHP <= 0)
+        if(nowHP >= 0)
         {
             CancelInvoke("UseSkill");
         }

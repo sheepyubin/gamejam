@@ -18,11 +18,20 @@ public class CamCanvas : MonoBehaviour
     private void Update()
     {
         if (cam[1].enabled == true)
+        {
             CamChange(1);
+
+        }
         if (cam[2].enabled == true)
+        {
             CamChange(2);
+
+        }
         if (cam[3].enabled == true)
+        {
             CamChange(3);
+
+        }
         if(Input.GetKeyDown(KeyCode.Escape))
             ESC.SetActive(true);
     }

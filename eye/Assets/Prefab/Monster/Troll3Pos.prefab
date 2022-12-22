@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PosEmpty: {fileID: 7282882914682992371}
-  AttackPoint1: {fileID: 7929221275689378941, guid: a2fdfaca28d99ba41a89419aec830cf8, type: 3}
-  AttackPoint2: {fileID: 7929221275689378941, guid: 9ba3c7a64283a684797b37128fccc6dc, type: 3}
-  AttackPoint3: {fileID: 9130519219912751819, guid: 85f080b96afa5d94ba5b698a940dbdcb, type: 3}
+  AttackPoint1: {fileID: 7929221275689378941, guid: 2d0c452e4f2816249907d71dffe01247, type: 3}
+  AttackPoint2: {fileID: 7929221275689378941, guid: 4e39360fc340afb47a7f0caf3f9fd939, type: 3}
+  AttackPoint3: {fileID: 9130519219912751819, guid: 62ef4bb9d3c29f74699ee759754a88ea, type: 3}
   MoveSpeed: 1
   delaytime: 0
   LR: 0

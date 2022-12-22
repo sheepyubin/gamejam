@@ -48,9 +48,41 @@ public class Mushroom_Attackted_Monster : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("skill4"))
+        switch (collision.gameObject.tag)
         {
-            skill4 = true;
+            case "skill1":
+                MonsterAtteackted(Random.Range(9, 13));
+                break;
+            case "skill2":
+                MonsterAtteackted(Random.Range(30, 38));
+                break;
+            case "skill3":
+                MonsterAtteackted(Random.Range(9, 13));
+                break;
+            case "skill4":
+                skill4 = true;
+                break;
+            case "skill5":
+                MonsterAtteackted(Random.Range(10, 15));
+                break;
+            case "skill6":
+                MonsterAtteackted(Random.Range(10, 15));
+                break;
+            case "skill7":
+                MonsterAtteackted(Random.Range(30, 38));
+                break;
+            case "skill8":
+                MonsterAtteackted(Random.Range(10, 15));
+                break;
+            case "attack5":
+                MonsterAtteackted(5);
+                break;
+            case "attack7":
+                MonsterAtteackted(7);
+                break;
+            case "attack9":
+                MonsterAtteackted(9);
+                break;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -65,6 +97,9 @@ public class Mushroom_Attackted_Monster : MonoBehaviour
                 break;
             case "skill3":
                 MonsterAtteackted(Random.Range(9, 13));
+                break;
+            case "skill4":
+                skill4 = true;
                 break;
             case "skill5":
                 MonsterAtteackted(Random.Range(10, 15));
@@ -121,6 +156,8 @@ public class Mushroom_Attackted_Monster : MonoBehaviour
             Btime += Time.deltaTime;
             if (Btime >= 1.0f)
             {
+                MonsterSpawn.SpawnCount--;
+                Debug.Log(MonsterSpawn.SpawnCount);
                 Destroy(transform.parent.gameObject);
                 Destroy(gameObject);
             }

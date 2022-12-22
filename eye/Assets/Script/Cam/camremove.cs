@@ -17,18 +17,23 @@ public class camremove : MonoBehaviour
         if (collision.gameObject.tag == "Stage1")
         {
             ShowCam1View();
+            MonsterSpawn.State = 1;
+            Debug.Log(MonsterSpawn.State);
         }
         if (collision.gameObject.tag == "Stage2")
         {
             ShowCam2View();
+            MonsterSpawn.State = 2;
         }
         if (collision.gameObject.tag == "Stage3")
         {
             ShowCam3View();
+            MonsterSpawn.State = 3;
         }
         if (collision.gameObject.tag == "BossStage")
         {
             ShowCamBossView();
+            MonsterSpawn.State = 4;
         }
     }
     public void ShowCam1View()
